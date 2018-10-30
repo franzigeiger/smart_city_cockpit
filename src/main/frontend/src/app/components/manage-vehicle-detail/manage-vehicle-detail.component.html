@@ -1,0 +1,95 @@
+<div class="modal-header">
+  <h4 class="modal-title">Vehicle Details <i>#{{model.vehicleID}}</i>
+    <i style="color:red" *ngIf="model.deleted" ngbTooltip="Shut down" class="fa fa-minus-circle" aria-hidden="true"></i>
+    <i style="color:green" *ngIf="!model.deleted" ngbTooltip="Available" class="fa fa-check-circle" aria-hidden="true"></i>
+    <button [style.marginLeft]="'10px'" type="button" class="btn btn-success" (click)="activeModal.dismiss('Shift plan click'); model.showShiftPlan();">
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    Shift plan
+  </button>
+  <button type="button" class="btn btn-success" (click)="activeModal.dismiss('Replace click'); model.replaceVehicle();">
+  <i class="fa fa-wrench" aria-hidden="true"></i>
+  Replace
+  </button>
+  <button type="button" class="btn btn-danger" (click)="activeModal.dismiss('Shutdown click'); model.shutDownVehicle();">
+  <i class="fa fa-minus-circle" aria-hidden="true"></i>
+  Shutdown
+  </button>
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form #fleetRequestForm="ngForm">
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col"><b>ID:</b></div>
+        <div class="col">
+          {{model.vehicleID}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Type:</b></div>
+        <div class="col">
+          {{model.type}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Problems:</b></div>
+        <div class="col">
+          <span *ngFor="let problem of model.problems; let i = index">
+            <span [ngClass]="problem.severity === 1 ? 'text-warning' : 'text-danger'"> {{problem.description}}
+          <i [ngbTooltip]="util.makeDateStr(problem.timestamp)" class="fa fa-clock-o" aria-hidden="true"></i>
+             </span>
+          <span *ngIf="model.problems.length > 1 && model.problems.length-1 !== i">|</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h5 class="modal-title">Feedback</h5>
+    <div [ngStyle]="styles.container">
+      <div [ngStyle]="styles.table">
+        <ngx-datatable #table class="material" [columnMode]="'flex'" [rows]="filteredFeedbackData" [headerHeight]="50" [rowHeight]="'auto'" [footerHeight]="50" [limit]="5" [sorts]="[{prop: 'timestampFormatted', dir: 'desc'}]" [loadingIndicator]="loadingIndicator">
+
+          <!-- Column Templates -->
+          <ngx-datatable-column *ngFor="let col of feedbackColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="col.flexGrow" [resizeable]="false">
+          </ngx-datatable-column>
+
+        </ngx-datatable>
+      </div>
+    </div>
+    <br>
+    <button type="button" style="margin-bottom: 1rem;" class="btn btn-success" (click)="goToFeedbacks()">
+        <i class="fa fa-comment-o" aria-hidden="true"></i>
+        Feedback Details</button>
+    <hr>
+
+    <h5 class="modal-title">Service Requests</h5>
+    <div [ngStyle]="styles.container">
+      <!-- <div [ngStyle]="styles.header">
+           <app-table-filter #feedbackfilter [preselect]="vehiclePreselect" [columns]="feedbackColumns" [callback]="filterFeedbackTable"></app-table-filter>
+           <div></div>
+           </div> -->
+
+      <div [ngStyle]="styles.table">
+        <ngx-datatable class="material" [loadingIndicator]="loadingIndicator" [limit]="10" [rows]="filteredServicesData" [columnMode]="'flex'" [rowHeight]="'auto'" [headerHeight]="50" [footerHeight]="50">
+          <ngx-datatable-column *ngFor="let col of servicesColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="1" [resizeable]="false">
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+    <hr>
+
+    <button type="button" style="margin-bottom: 1rem;" class="btn btn-success" (click)="goToServices()" [disabled]="!fleetRequestForm.form.valid">
+      <i class="fa fa-wrench" aria-hidden="true"></i>
+      Service Details</button>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+    </div>
+  </div>
+</form>
+
+<app-modal-wrapper #replaceVehicleModal selectedComponent="replaceVehicle"></app-modal-wrapper>
+<app-modal-wrapper #confirm selectedComponent="confirm"></app-modal-wrapper>

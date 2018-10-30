@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <h4 class="modal-title">Feedback for {{payload.type}} <i>{{payload.targetFormatted}}</i></h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-6 font-weight-bold">
+      Creation Date:
+    </div>
+    <div class="col-sm-6">
+      {{payload.timestampFormatted}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 font-weight-bold">
+      Reason:
+    </div>
+    <div class="col-sm-6">
+      {{payload.reason}}
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 font-weight-bold">
+      Description:
+    </div>
+    <div class="col-12">
+      {{payload.description}}
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="!payload.finished">
+    <div class="col-12 text-center">
+      <button (click)="handleClosing('setFinished')"
+              type="submit"
+              class="btn btn-success">
+        <i class='fa fa-check' aria-hidden='true'></i> Set feedback to 'finished'
+      </button>
+      <button *ngIf="payload.type === 'Stop' || payload.type === 'Vehicle'"
+              (click)="handleClosing('openServiceRequest')"
+              type="submit"
+              class="btn btn-primary">
+        <i class='fa fa-wrench' aria-hidden='true'></i> Open Service Request
+      </button>
+    </div>
+  </div>
+  <div class="lead" *ngIf="payload.finished">This feedback is already processed and set to 'finished'.</div>
+</div>

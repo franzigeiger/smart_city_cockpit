@@ -1,0 +1,38 @@
+[
+  {
+    "id": "123",
+    "subject": "Fußballspiel FCA",
+    "startDateTime": 1505029500000,
+    "endDateTime": 1510310700000,
+    "text": "So ein blödes Event aber auch... + Weitere Beschreibung",
+    "appointmentInvolved": {
+      "partyId": "TODO",
+      "roleCode": 35
+    },
+    "locationName": "bei Malte Party"
+  },
+  {
+    "id": "1234",
+    "subject": "was auch immer",
+    "startDateTime": 1514993975298,
+    "endDateTime": 1541846700000,
+    "text": "Test-Event llalalaaaa",
+    "appointmentInvolved": {
+      "partyId": "TODO",
+      "roleCode": 35
+    },
+    "locationName": "München"
+  },
+  {
+    "id": "1234",
+    "subject": "was auch immer",
+    "startDateTime": 2514993975298,
+    "endDateTime": 2541846700000,
+    "text": "Test-Event llalalaaaa",
+    "appointmentInvolved": {
+      "partyId": "TODO",
+      "roleCode": 35
+    },
+    "locationName": "München"
+  }
+]

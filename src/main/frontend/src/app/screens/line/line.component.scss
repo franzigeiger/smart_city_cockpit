@@ -1,0 +1,10 @@
+h2 {
+  padding: 20px 0 0 0;
+}
+
+// Pointer for d3 clickable Line-View Items
+/deep/ #tubeVisRoot svg g circle,
+/deep/ #tubeVisRoot svg g g text,
+/deep/ #tubeVisRoot svg g g rect {
+  cursor: pointer;
+}

@@ -1,0 +1,19 @@
+<div [ngStyle]="styles.container">
+  <select
+    class="form-control"
+    [(ngModel)]="model.column"
+    (change)="updateFilter()"
+    name="filtercolumn">
+    <option value="nofilter">No filter</option>
+    <option *ngFor="let c of columns" [value]="c">{{c}}</option>
+  </select>
+
+  <input
+    [ngStyle]="styles.input"
+    *ngIf="model.column !== 'nofilter'"
+    type="text"
+    placeholder="Type to filter..."
+    [(ngModel)]="model.filter"
+    (keyup)="updateFilter()"
+  />
+</div>

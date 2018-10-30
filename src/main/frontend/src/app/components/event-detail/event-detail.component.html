@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h4 class="modal-title">Event: {{payload.title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-6 font-weight-bold">
+      Start Date/Time:
+    </div>
+    <div class="col-sm-6">
+      {{payload.startDateTimeFormatted}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 font-weight-bold">
+      End Date/Time:
+    </div>
+    <div class="col-sm-6">
+      {{payload.endDateTimeFormatted}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 font-weight-bold">
+      Location:
+    </div>
+    <div class="col-sm-6">
+      {{payload.location}}
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 font-weight-bold">
+      Description:
+    </div>
+    <div class="col-12">
+      {{payload.description}}
+    </div>
+  </div>
+  <div class="row" *ngIf="payload.isStartpage">
+    <div class="col-12 text-center">
+      <hr>
+      <a [routerLink]="['events']" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Go to Events</a>
+    </div>
+  </div>
+</div>

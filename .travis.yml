@@ -1,0 +1,13 @@
+language: java
+sudo: true
+dist: trusty
+script:
+- mvn test
+notifications:
+  slack: semaster:xxvJ0KmcECMwUphrWkUhO4bg
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: ovknERsyVzDf9tO2msrWtn2vVzb3yoqcK5RPIzXyYHILp6YCuhvRFGIcLXHS/fWpFuWZy9ev7Aibt+kXTcJl041DFHb44GkJWBEzRC3yb91fbDd0tJEKM6oJ/7hOSprNsnGUVwakE4g+LAHXLQ8imI9pPNY5qbISvNFqtzrgoMHPTe/S+KnLdxv7lT21ermvUtgdQyxoZE5PrUTzp6LHbZYg8vZRenFy0bdqVmKu6F5UfCpM2OXF6nI/xyNZgouPHx9YrweBpzZfJreJ2WBNdGCu51MgehXiNMfBM3kqhg48PYpTObVJzz/fePOo/VVxlZtz9G5Zss18/2jdeYck1+hQNrQIPC0ZKeGBzxNc+y14B4pPKND52ID8Z3mf7YweJG5HqbFGPrX+IeB8pA6rEiOWuNA9J6vECWjb4CCD+nwhPid+grsOwSDpqHcTZKPcgWBT5V0OHJ2HNVvFW1NO93DevORr1qBX6rHasqclUQS6cuvx6hBo7yd+MvlTw/HH7gFef0euAQ9z4v4PkxQZCf7PsgVyrWqpDHrJm0RSczc+x5K3lKEUhdsfzSgu6dTue/rPpz5ybyPV7mlt5feIDo/A3qR86Kq4Q7blMLOVkjnNO6Zqvam8L39lIO1DuP8OMDELKMYZ9BMOq+rOLV9CwaMw36nLjsI2zPNEZvdXZak=
+  app: smart-city-cockpit

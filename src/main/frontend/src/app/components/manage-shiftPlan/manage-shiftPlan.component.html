@@ -1,0 +1,70 @@
+<div class="modal-header">
+  <h4 class="modal-title">Tour <i>#{{model.tourID}}</i></h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-header">
+  <div class="container">
+    <div class="row">
+      <div class="col"><b>VehicleID:</b></div>
+      <div class="col">
+        {{model.vehicleID}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"><b>Type:</b></div>
+      <div class="col">
+        <span>
+          {{model.vehicleType}}
+          <i *ngIf="model.vehicleType==='Tube'" class="fa fa-subway" aria-hidden="true"></i>
+          <i *ngIf="model.vehicleType==='Bus'" class="fa fa-bus" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form #shiftPlanForm="ngForm">
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col"><b>Tour-ID:</b></div>
+        <div class="col">
+          {{model.tourID}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Day:</b></div>
+        <div class="col">
+          {{model.date}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Line:</b></div>
+        <div class="col">
+          {{model.name}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Start time &ndash; End time</b></div>
+        <div class="col">
+          {{model.startTime}} &ndash; {{model.endTime}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Duration:</b></div>
+        <div class="col">
+          {{model.durationHours}} hours ({{model.durationMinutes}} minutes)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button [style.marginLeft]="'10px'" type="button" class="btn btn-danger" (click)="removeVehicleFromTour()" [disabled]="!shiftPlanForm.form.valid">Remove Vehicle from Tour</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+  </div>
+</form>
+
+<app-modal-wrapper #confirm selectedComponent="confirm"></app-modal-wrapper>

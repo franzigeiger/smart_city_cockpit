@@ -1,0 +1,87 @@
+<h2>Fleet</h2>
+<div [ngStyle]="styles.container">
+  <div [ngStyle]="styles.header">
+    <app-table-filter #fleetFilter [preselect]="fleetPreselect" [columns]="fleetColumns" [callback]="filterFleetTable"></app-table-filter>
+    <div></div>
+    <button type="button" class="btn btn-success" (click)="addVehicle()">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    Add Vehicle
+  </button>
+  </div>
+  <div [ngStyle]="styles.table">
+    <ngx-datatable class="material" [sorts]="[{prop: 'state', dir: 'desc'}]" [footerHeight]="50" [rows]="filteredFleetData" [columnMode]="'flex'" [rowHeight]="'auto'" [headerHeight]="50" [limit]="15" [loadingIndicator]="loadingIndicator" (activate)="onActivate($event)">
+      <ngx-datatable-column name="Type" [flexGrow]="0.2" [cellClass]="getCellClass" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <i *ngIf="row.type==='Tube'" class="newsfeed fa fa-subway" aria-hidden="true"></i>
+          <i *ngIf="row.type==='Bus'" class="newsfeed fa fa-bus" aria-hidden="true"></i>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="ID" prop="vehicleID" [flexGrow]="0.5" [cellClass]="getCellClass">
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Availability" prop="deleted" [flexGrow]="0.5" [cellClass]="getCellClass" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <span [ngClass]="'text-danger'" *ngIf="row.deleted">
+            Shut down
+            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+          </span>
+          <span [ngClass]="'text-success'" *ngIf="!row.deleted">
+            Available
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="State" [flexGrow]="0.5" [cellClass]="getCellClass" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <span [ngClass]="'text-success'" *ngIf="row.state==='Green'">
+            OK
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
+          </span>
+          <span [ngClass]="'text-warning'" *ngIf="row.state==='Yellow'">
+            Warning
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+          </span>
+          <span [ngClass]="'text-danger'" *ngIf="row.state==='Red'">
+            Critical
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Problems" [flexGrow]="1.5" [cellClass]="getCellClass" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <span *ngFor="let problem of row.problems; let i = index">
+          <span [ngClass]="problem.severity === 1 ? 'text-warning' : 'text-danger'"> {{problem.description}}
+          <i [ngbTooltip]="util.makeDateStr(problem.timestamp)" class="fa fa-clock-o" aria-hidden="true"></i>
+           </span>
+          <span *ngIf="row.problems.length > 1 && row.problems.length-1 !== i">|</span>
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Actions" [flexGrow]="1" [cellClass]="getCellClass" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <button *ngIf="!row.deleted" type="button" title="Shift Plan" class="btn btn-outline-dark btn-sm" (click)="showShiftPlan($event, row, rowIndex)">
+            <i class='fa fa-calendar' aria-hidden='true'></i>
+          </button>
+          <button type="button" title="Service" class="btn btn-outline-dark btn-sm" (click)="showServices($event, row, rowIndex)">
+            <i class='fa fa-wrench' aria-hidden='true'></i>
+          </button>
+          <button *ngIf="!row.deleted" type="button" title="Replace" class="btn btn-outline-dark btn-sm" (click)="replaceVehicle($event, row, rowIndex)">
+            <i class='fa fa-refresh' aria-hidden='true'></i>
+          </button>
+          <button type="button" title="Details" class="btn btn-outline-dark btn-sm" (click)="showVehicleDetails($event, row, rowIndex)">
+            <i class='fa fa-search' aria-hidden='true'></i>
+          </button>
+          <button [style.marginLeft]="'15px'" *ngIf="!row.deleted" type="button" title="Shutdown" class="btn btn-outline-danger btn-sm" (click)="shutDownVehicle($event, row, rowIndex)">
+            <i class='fa fa-minus-circle' aria-hidden='true'></i>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+    <br>
+  </div>
+</div>
+
+<app-modal-wrapper #manageFleet selectedComponent="manage-fleet"></app-modal-wrapper>
+<app-modal-wrapper #manageVehicleDetails selectedComponent="manage-vehicle"></app-modal-wrapper>
+<app-modal-wrapper #confirm selectedComponent="confirm"></app-modal-wrapper>
+<app-modal-wrapper #replaceVehicleModal selectedComponent="replaceVehicle"></app-modal-wrapper>

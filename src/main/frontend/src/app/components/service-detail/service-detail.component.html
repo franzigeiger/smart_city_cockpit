@@ -1,0 +1,47 @@
+  <div class="modal-header">
+    <h4 class="modal-title">{{payload.name}} <i *ngIf="payload.serviceId">({{payload.serviceId}})</i></h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col"><b>Status:</b></div>
+        <div class="col">
+          {{payload.state}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Priority:</b></div>
+        <div class="col">
+          {{payload.priority}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Service Type:</b></div>
+        <div class="col">
+          {{payload.serviceType}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><b>{{payload.objectType}} ID:</b></div>
+        <div class="col">{{payload.objectId}}</div>
+      </div>
+      <div class="row">
+        <div class="col"><b>Due Date:</b></div>
+        <div class="col">{{payload.dueDate}}</div>
+      </div>
+      <div class="row" *ngIf="payload.status === 'done'">
+        <div class="col"><b>Completed on:</b></div>
+        <div class="col"><b>{{payload.completionOnDate}}</b></div>
+      </div>
+    </div>
+
+    <hr>
+    <h5 style="margin-top: 12px;">Detailed description</h5>
+    <div>{{payload.description}}</div>
+
+    <!-- <div style="text-align: right; font-style: italic; margin-top: 12px">Customer: {{payload.customerID}}</div> -->
+  </div>

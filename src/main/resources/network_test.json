@@ -1,0 +1,204 @@
+[
+  {
+    "lineID": "bakerloo",
+    "name": "Bakerloo",
+    "color": "#ff0000",
+    "type": "tube",
+    "stops": [
+      {
+        "id": "940GZZLUHAW",
+        "name": "Harrow & Wealdstone Underground Station",
+        "lat": 51.592268,
+        "lon": -0.335217
+      },
+      {
+        "id": "940GZZLUKEN",
+        "name": "Kenton Underground Station",
+        "lat": 51.581756,
+        "lon": -0.31691
+      },
+      {
+        "id": "940GZZLUSKT",
+        "name": "South Kenton Underground Station",
+        "lat": 51.570232,
+        "lon": -0.308433
+      },
+      {
+        "id": "940GZZLUNWY",
+        "name": "North Wembley Underground Station",
+        "lat": 51.562551,
+        "lon": -0.304
+      },
+      {
+        "id": "940GZZLUWYC",
+        "name": "Wembley Central Underground Station",
+        "lat": 51.552304,
+        "lon": -0.296852
+      },
+      {
+        "id": "940GZZLUSGP",
+        "name": "Stonebridge Park Underground Station",
+        "lat": 51.543959,
+        "lon": -0.275892
+      },
+      {
+        "id": "940GZZLUHSN",
+        "name": "Harlesden Underground Station",
+        "lat": 51.53631,
+        "lon": -0.257883
+      },
+      {
+        "id": "940GZZLUWJN",
+        "name": "Willesden Junction Underground Station",
+        "lat": 51.532259,
+        "lon": -0.244283
+      },
+      {
+        "id": "940GZZLUKSL",
+        "name": "Kensal Green Underground Station",
+        "lat": 51.530539,
+        "lon": -0.225016
+      },
+      {
+        "id": "940GZZLUQPS",
+        "name": "Queen's Park Underground Station",
+        "lat": 51.534158,
+        "lon": -0.204574
+      },
+      {
+        "id": "940GZZLUKPK",
+        "name": "Kilburn Park Underground Station",
+        "lat": 51.534979,
+        "lon": -0.194232
+      },
+      {
+        "id": "940GZZLUMVL",
+        "name": "Maida Vale Underground Station",
+        "lat": 51.529777,
+        "lon": -0.185758
+      },
+      {
+        "id": "940GZZLUWKA",
+        "name": "Warwick Avenue Underground Station",
+        "lat": 51.523263,
+        "lon": -0.183783
+      },
+      {
+        "id": "940GZZLUPAC",
+        "name": "Paddington Underground Station",
+        "lat": 51.516581,
+        "lon": -0.175689
+      },
+      {
+        "id": "940GZZLUERB",
+        "name": "Edgware Road (Bakerloo) Underground Station",
+        "lat": 51.520299,
+        "lon": -0.17015
+      },
+      {
+        "id": "940GZZLUMYB",
+        "name": "Marylebone Underground Station",
+        "lat": 51.522322,
+        "lon": -0.163207
+      },
+      {
+        "id": "940GZZLUBST",
+        "name": "Baker Street Underground Station",
+        "lat": 51.522883,
+        "lon": -0.15713
+      },
+      {
+        "id": "940GZZLURGP",
+        "name": "Regent's Park Underground Station",
+        "lat": 51.523344,
+        "lon": -0.146444
+      },
+      {
+        "id": "940GZZLUOXC",
+        "name": "Oxford Circus Underground Station",
+        "lat": 51.515224,
+        "lon": -0.141903
+      },
+      {
+        "id": "940GZZLUPCC",
+        "name": "Piccadilly Circus Underground Station",
+        "lat": 51.51005,
+        "lon": -0.133798
+      },
+      {
+        "id": "940GZZLUCHX",
+        "name": "Charing Cross Underground Station",
+        "lat": 51.50741,
+        "lon": -0.127277
+      },
+      {
+        "id": "940GZZLUEMB",
+        "name": "Embankment Underground Station",
+        "lat": 51.507058,
+        "lon": -0.122666
+      },
+      {
+        "id": "940GZZLUWLO",
+        "name": "Waterloo Underground Station",
+        "lat": 51.503299,
+        "lon": -0.11478
+      },
+      {
+        "id": "940GZZLULBN",
+        "name": "Lambeth North Underground Station",
+        "lat": 51.498808,
+        "lon": -0.112315
+      },
+      {
+        "id": "940GZZLUEAC",
+        "name": "Elephant & Castle Underground Station",
+        "lat": 51.494536,
+        "lon": -0.100606
+      }
+    ],
+    "problems": {
+      "940GZZLUWLO": {
+        "description": "Sehr dreckig - man kann gar nicht mehr laufen",
+        "severity": 3
+      },
+      "940GZZLUEAC": {
+        "description": "Loch in der Straße",
+        "severity": 5
+      }
+    }
+  },
+  {
+    "lineID": "testline",
+    "name": "Testlinie Erfunden von Marcel",
+    "color": "#0000ff",
+    "type": "tube",
+    "stops": [
+      {
+        "id": "940GZZLUSKT",
+        "name": "South Kenton Underground Station",
+        "lat": 51.570232,
+        "lon": -0.308433
+      },
+      {
+        "id": "940GZZLUNWY",
+        "name": "North Wembley Underground Station",
+        "lat": 51.562551,
+        "lon": -0.304
+      },
+      {
+        "id": "940GZZLUWLO",
+        "name": "Waterloo Underground Station",
+        "lat": 51.503299,
+        "lon": -0.11478
+      },
+      {
+        "id": "940GZZLUEAC",
+        "name": "Elephant & Castle Underground Station",
+        "lat": 51.494536,
+        "lon": -0.100606
+      }
+    ],
+    "problems": {
+    }
+  }
+]

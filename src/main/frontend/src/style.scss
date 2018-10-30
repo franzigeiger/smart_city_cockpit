@@ -1,0 +1,202 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr-bs4-alert";
+
+body {
+  font-size: 100%;
+  padding-top: 4.5rem;
+}
+
+//spinner
+.sk-cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 10px auto;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #FFF;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+//global forms checker
+.ng-valid.required,
+.ng-valid[required] {
+  border-left: 5px solid #42A948;
+  /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+  /* red */
+}
+
+.align-cell-numeric {
+  .datatable-body-cell-label {
+    text-align: right;
+  }
+}
+
+.align-header-numeric {
+  div {
+    text-align: right;
+  }
+}
+
+// ========= D3 =========
+// D3 d3-tooltip
+
+.d3-tooltip {
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  text-align: center;
+  padding: 8px;
+  background-color: #fff;
+}
+
+// network map
+.map {
+  height: 550px;
+  width: 100%;
+
+  .d3-layer line {
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+// ========= D3 =========
+// Modal size with width set to 100%
+// just pass "fullWidth" as the size-value of the modal
+
+.modal-fullWidth {
+  max-width: 100%;
+}
+
+// Fix mouse-over for Google-Pie-Charts
+svg > g > g:last-child {
+  pointer-events: none;
+}
+
+// Tooltip fix - Status page
+.tooltip-inner {
+  max-width: 400px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+// For overflow of tooltip, just fade it to black to see there might be more
+.tooltip-inner:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  background: linear-gradient(transparent 220px, #000);
+}
+
+// Newsfeed symbol size
+.newsfeed.fa {
+  font-size: x-large;
+}
+
+// ShiftPlan symbol size
+.shiftPlan.fa {
+  font-size: xx-large;
+}
+
+/* SASS for DataTables with single Selection
+   Override background color + pointer cursor
+*/
+.ngx-datatable.material.single-selection {
+  cursor: pointer;
+}
+
+.ngx-datatable.material.single-selection .datatable-body-row.active:hover .datatable-row-group {
+  background-color: #1f89ce;
+}
+
+.ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group {
+  background-color: #2399e5;
+}
+
+// For every elment that needs a pointer for cursor
+.use-pointer {
+  cursor: pointer;
+}

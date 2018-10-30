@@ -1,0 +1,77 @@
+<h2>Service Requests Overview</h2>
+
+<div [ngStyle]="styles.container">
+  <h3>Open tickets</h3>
+  <div [ngStyle]="styles.header">
+    <app-table-filter
+      #servicesfilter
+      [preselect]="servicesPreselect"
+      [columns]="servicesColumns"
+      [callback]="filterServicesTable"></app-table-filter>
+    <div></div>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="addService()">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      Add Service Request
+    </button>
+  </div>
+
+  <div [ngStyle]="styles.table">
+    <ngx-datatable
+      #table
+      class="material"
+      [rows]="filteredServicesData"
+      [groupRowsBy]="'objectType'"
+      [groupExpansionDefault]="true"
+      [columnMode]="'force'"
+      [rowHeight]="'auto'"
+      (activate)="onActivate($event)"
+      [selected]="selectedRow"
+      [selectionType]="'single'"
+      [headerHeight]="50">
+
+      <!-- Group Header Template -->
+      <ngx-datatable-group-header [rowHeight]="50" #myGroupHeader>
+        <ng-template let-group="group" let-expanded="expanded" ngx-datatable-group-header-template>
+          <div style="padding-left:6px; padding-top: 6px; padding-bottom: 6px">
+            <span
+              style="cursor: pointer"
+              [class.datatable-icon-right]="!expanded"
+              [class.datatable-icon-down]="expanded"
+              title="Expand/Collapse Group"
+              (click)="toggleExpandGroup(group)">
+              type: {{group.value[0].objectType}}
+            </span>
+          </div>
+        </ng-template>
+      </ngx-datatable-group-header>
+
+      <ngx-datatable-column
+        *ngFor="let col of servicesColumns"
+        [name]="col.name"
+        [prop]="col.prop"
+        [width]="150"
+          [resizeable]="false">
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        name="Actions"
+        [width]="50">
+        <!-- These are currently triggering debug warnings due to a bug in ngx table: https://github.com/swimlane/ngx-datatable/issues/721
+              As they aren't harmful, we ignore them. -->
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <button
+            type="button"
+            class="btn btn-outline-dark btn-sm"
+            (click)="showDetail(row)">
+            <i class='fa fa-search' aria-hidden='true'></i>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
+<app-modal-wrapper #manageservice selectedComponent="manage-service"></app-modal-wrapper>
+<app-modal-wrapper #servicedetail selectedComponent="service-detail"></app-modal-wrapper>

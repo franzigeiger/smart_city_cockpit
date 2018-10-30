@@ -1,0 +1,95 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form *ngIf="this.parameters.mode==='add'" #notificationForm="ngForm">
+  <div class="modal-body">
+    <fieldset class="form-group">
+      <label for="direction">Select direction for tour</label>
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="direction" [value]="true" [(ngModel)]="model.isOutbound">
+          {{inboundStation}}
+          <i class="fa fa-arrow-circle-o-right" aria-hidden="true"> </i>
+          {{outboundStation}}
+        </label>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="direction" [value]="false" [(ngModel)]="model.isOutbound">
+          {{inboundStation}}
+          <i class="fa fa-arrow-circle-o-left" aria-hidden="true"> </i>
+          {{outboundStation}}
+        </label>
+      </div>
+    </fieldset>      
+
+    <div class="form-group">
+      <label for="dateTime">Select date and time for tour start</label><br>
+      <p-calendar 
+        name="dateTime"
+        [(ngModel)]="model.dateTime" 
+        showTime="true"
+        hourFormat="24"
+        [showTime]="true"
+        [showIcon]="true"
+        (onSelect)="updateAvailableVehicles()"
+        showButtonBar="true"></p-calendar>
+    </div>
+
+    <div class="form-group" *ngIf="model.dateTime">
+      <label for="description">Assign vehicle to tour</label>
+      <angular2-multiselect
+        required
+        name="assignedVehicle"
+        id="assignedVehicle"
+        [settings]="vehicleSelectSettings"
+        [data]="assignableVehicles"
+        (ngModelChange)="handleAssignVehicle($event)"
+        [(ngModel)]="assignedVehicle"></angular2-multiselect>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="activeModal.close(model)"
+      [disabled]="!notificationForm.form.valid">Save Tour</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+  </div>
+
+</form>
+
+<form *ngIf="this.parameters.mode === 'edit'" #editForm="ngForm">
+  <div class="modal-body">    
+    <div class="form-group">
+      <label for="description">Assign vehicle to tour</label>
+      <angular2-multiselect
+        name="assignedVehicle"
+        id="assignedVehicle"
+        [settings]="vehicleSelectSettings"
+        [data]="assignableVehicles"
+        (ngModelChange)="handleAssignVehicle($event)"
+        [(ngModel)]="assignedVehicle"></angular2-multiselect>
+    </div>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="removeVehicle()">Remove vehicle from tour</button>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="activeModal.close(model)"
+      [disabled]="!editForm.form.valid">Save Tour</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+  </div>
+</form>

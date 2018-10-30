@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Tour to {{model.vehicleType}} <i>#{{model.vehicleID}}</i>
+    <span [style.marginLeft]="'15px'">
+      <i *ngIf="model.vehicleType==='Tube'" class="fa fa-subway" aria-hidden="true"></i>
+      <i *ngIf="model.vehicleType==='Bus'" class="fa fa-bus" aria-hidden="true"></i>
+    </span>
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form #tourToVehicleForm="ngForm">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="selectedDay">Select a Day</label>
+      <select class="form-control" required [(ngModel)]="model.selectedDay" (change)="changeDay()" name="selectedDay">
+          <option *ngFor="let day of weekdaysMapping | ObjNgFor; let i = index;" [value]="day" [selected]="i===1">
+            {{day}}, {{formatSelectDate(day)}}
+          </option>
+        </select>
+    </div>
+  </div>
+
+  <div *ngIf="model.selectedDay" [ngStyle]="styles.container">
+    <div [ngStyle]="styles.header">
+      <app-table-filter #tourfilter [columns]="tourColumns" [callback]="filterToursTable"></app-table-filter>
+    </div>
+
+
+    <div [ngStyle]="styles.table">
+      <label for="selectedTour">Select a Tour</label>
+
+      <ngx-datatable name="selectedTour" [limit]="10" [footerHeight]="50" class="material" [rows]="filteredTourData"
+        [columns]="tourColumns" [columnMode]="'flex'" [rowHeight]="'auto'" [headerHeight]="50" [selected]="model.selectedTour"
+          [selectionType]="'single'" [loadingIndicator]="loadingIndicator">
+        <ngx-datatable-column [cellClass]="getCellClass" *ngFor="let col of tourColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="1"   [resizeable]="false">
+        </ngx-datatable-column>
+      </ngx-datatable>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="activeModal.close(model)" [disabled]="(!tourToVehicleForm.form.valid) || (!model.selectedTour.length)">Add Tour</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+  </div>
+</form>

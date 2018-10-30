@@ -1,0 +1,124 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Event</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form #eventForm="ngForm">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input
+            class="form-control"
+            type="text"
+            required
+            id="title"
+            name="name"
+            [(ngModel)]="model.title">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="start"><i class="fa fa-clock-o" aria-hidden="true"></i> Start Date/Time:</label>
+          <p-calendar
+            id="start"
+            name="start"
+            required
+            [(ngModel)]="model.startPicker"
+            showTime="true"
+            hourFormat="24"
+            [showIcon]="true"
+            (onClose)="compareStartEndDate()"
+            showButtonBar="true"></p-calendar>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="end"><i class="fa fa-clock-o" aria-hidden="true"></i> End Date/Time:</label>
+          <p-calendar
+            id="end"
+            name="end"
+            required
+            [(ngModel)]="model.endPicker"
+            showTime="true"
+            hourFormat="24"
+            [showIcon]="true"
+            (onClose)="compareStartEndDate()"
+            showButtonBar="true"></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="errorMessage !== ''" class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+        <div *ngIf="warningMessage !== ''" class="alert alert-warning" role="alert">
+          {{ warningMessage }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="involved">Party Involved</label>
+          <select
+            class="form-control"
+            id="involved"
+            required
+            [(ngModel)]="model.involved"
+            name="involved">
+            <option *ngFor="let p of involvedParties" [value]="p">{{p}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="title">Location:</label>
+          <input
+            class="form-control"
+            type="text"
+            required
+            id="location"
+            name="location"
+            [(ngModel)]="model.location">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="title">Description:</label>
+          <textarea
+            class="form-control"
+            type="text"
+            required
+            id="description"
+            name="description"
+            [(ngModel)]="model.description">
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="modal-footer col-12">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="activeModal.close(refreshModel(model))"
+          [disabled]="!eventForm.form.valid || errorMessage !== ''">Save Event
+        </button>
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+

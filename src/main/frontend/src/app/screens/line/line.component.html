@@ -1,0 +1,110 @@
+<h2>{{lineName}} line <i *ngIf="selectedStop">({{selectedStop.name}})</i></h2>
+<a [routerLink]="['/timetable', lineID]">
+  <button
+    type="button"
+    class="btn btn-outline-dark">
+    Go to timetable
+  </button>
+</a>
+<button *ngIf="selectedStop" type="button" class="btn" [ngClass]="{'btn-outline-danger': isStopOpen(selectedStop.id), 'btn-outline-success': !isStopOpen(selectedStop.id)}" (click)="toggleStopOpen(selectedStop.id)">
+  <span *ngIf="isStopOpen(selectedStop.id); else reopen">Close this stop</span>
+  <ng-template #reopen>Reopen this stop</ng-template>
+</button>
+<div [style.overflow]="'auto'" id="tubeVisRoot"></div>
+
+<h2>Services</h2>
+<div [ngStyle]="styles.container">
+  <div [ngStyle]="styles.header">
+    <app-table-filter #servicesfilter [preselect]="servicesPreselect" [columns]="servicesColumns" [callback]="filterServicesTable"></app-table-filter>
+    <div></div>
+    <button type="button" class="btn btn-success" (click)="addService()">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      Add Service Request
+    </button>
+  </div>
+
+  <div [ngStyle]="styles.table">
+    <ngx-datatable class="material" [rows]="filteredServicesData" [columnMode]="'flex'" [rowHeight]="'auto'" [sorts]="[{prop: 'priority', dir: 'desc'}]" (activate)="selectService($event)" [selected]="selectedService" [selectionType]="'single'" [headerHeight]="50">
+      <ngx-datatable-column *ngFor="let col of servicesColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="1" [resizeable]="false">>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Actions" [flexGrow]=".9" [resizeable]="false">>
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <button type="button" class="btn btn-outline-dark btn-sm" (click)="showServiceDetail(row)">
+            <i class='fa fa-search' aria-hidden='true'></i>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
+<h2>Feedback</h2>
+<div [ngStyle]="styles.container">
+  <div [ngStyle]="styles.header">
+    <app-table-filter #feedbackfilter [preselect]="feedbackPreselect" [columns]="feedbackColumns" [callback]="filterFeedbackTable"></app-table-filter>
+    <div></div>
+  </div>
+
+  <div [ngStyle]="styles.table">
+    <ngx-datatable class="material" [columnMode]="'flex'" [rows]="filteredFeedbackData" [rowHeight]="'auto'" [headerHeight]="50" [footerHeight]="50" [limit]="5" [sorts]="[{prop: 'timestampFormatted', dir: 'desc'}]" (activate)="onActivateFeedback($event)">
+
+      <!-- Column Templates -->
+      <ngx-datatable-column *ngFor="let col of feedbackColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="col.flexGrow" [cellClass]="getCellClass" [resizeable]="false">
+      </ngx-datatable-column>
+      <ngx-datatable-column [flexGrow]="1" name="Actions" [flexGrow]="0.3" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <button type="button" class="btn btn-outline-dark btn-sm" (click)="showFeedbackDetail(row)">
+            <i class='fa fa-search' aria-hidden='true'></i>
+          </button>
+          <button type="button" class="btn btn-outline-success btn-sm" (click)="finishFeedback(row, rowIndex)">
+            <i class='fa fa-check' aria-hidden='true'></i>
+          </button>
+          <button *ngIf="row.type === 'Stop' || row.type === 'Vehicle'" type="button" class="btn btn-outline-primary btn-sm" (click)="openServiceRequest(row, rowIndex)">
+            <i class='fa fa-wrench' aria-hidden='true'></i>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
+<h2>Notifications</h2>
+<div [ngStyle]="styles.container">
+  <div [ngStyle]="styles.header">
+    <app-table-filter #notificationfilter [preselect]="notificationPreselect" [columns]="notificationColumns" [callback]="filterNotificationTable"></app-table-filter>
+    <div></div>
+    <button type="button" class="btn btn-success" (click)="addNotification()">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      Add Notification
+    </button>
+  </div>
+
+  <div [ngStyle]="styles.table">
+    <ngx-datatable class="material" [rows]="filteredNotificationData" [columnMode]="'flex'" [rowHeight]="'auto'" [sorts]="[{prop: 'description', dir: 'asc'}]" (activate)="selectNotification($event)" [selectionType]="'single'" [selected]="selectedNotification"
+      [headerHeight]="50">
+      <ngx-datatable-column name="Description" prop="description" [flexGrow]="1" [resizeable]="false">
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Affected Stops" prop="stops" [flexGrow]="1" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <span title="{{row.stops}}">{{row.stops.length > 10 ? "More than 10 stops" : row.stops.length > 5 ? "More than 5 stops" : row.stops}}</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Actions" [flexGrow]="0.3" [resizeable]="false">
+        <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+          <button type="button" class="btn btn-outline-dark btn-sm" (click)="deleteNotification(row)">
+            <i class='fa fa-trash-o' aria-hidden='true'></i>
+          </button>
+          <button type="button" class="btn btn-outline-dark btn-sm" (click)="editNotification(row, rowIndex)">
+            <i class='fa fa-pencil' aria-hidden='true'></i>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+
+<app-modal-wrapper #managenotification selectedComponent="manage-notification"></app-modal-wrapper>
+<app-modal-wrapper #manageservice selectedComponent="manage-service"></app-modal-wrapper>
+<app-modal-wrapper #servicedetail selectedComponent="service-detail"></app-modal-wrapper>
+<app-modal-wrapper #feedbackdetail selectedComponent="feedback-detail"></app-modal-wrapper>
+<app-modal-wrapper #manageVehicleDetails selectedComponent="manage-vehicle"></app-modal-wrapper>

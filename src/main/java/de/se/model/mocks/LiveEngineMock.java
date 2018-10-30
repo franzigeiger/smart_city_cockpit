@@ -1,0 +1,281 @@
+package de.se.model.mocks;
+
+import de.se.data.*;
+import de.se.model.interfaces.LiveEngine;
+
+import java.util.*;
+
+public class LiveEngineMock extends TimerTask implements LiveEngine {
+
+    private int LIVE_ENGINE_FREQUENCY_SECONDS = 3 * 60;
+    private int LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN = 5;
+    private int LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN = 3;
+    private int LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN = 1;
+    private int LIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN = 1;
+    private int LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN = 2;
+    private int LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN = 1;
+    private int LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN = 1;
+    private int LIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE = 20;
+    private int LIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE = 10;
+    private int LIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE = 40;
+    private int LIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE = 20;
+    private int LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN = 25;
+    private int LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN = 30;
+    private int LIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM = 2 * 60;
+    private boolean LIVE_ENGINE_RUN_LIVE = true;
+
+    @Override
+    public void enrichVehicles(Collection<Vehicle> vehicles) {
+    }
+
+    @Override
+    public void enrichStops(Collection<Stop> stops) {
+
+    }
+
+    @Override
+    public void enrichLines(List<Line> lines) {
+
+    }
+
+    @Override
+    public List<Feedback> getNewFeedbacks() {
+        return new ArrayList<Feedback>();
+    }
+
+    @Override
+    public String getName() {
+        return this.getClass().getName();
+    }
+
+    @Override
+    public void initialize() {
+
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void restart() {
+
+    }
+
+    @Override
+    public boolean isLiveEngineStarted() {
+        return true;
+    }
+
+    @Override
+    public void generateVehicleProblems(int amount) {
+
+    }
+
+    @Override
+    public void generateStopProblems(int amount) {
+
+    }
+
+    @Override
+    public void generateLineProblems(int amount) {
+
+    }
+
+    @Override
+    public HashMap<String, Position> generatePositions(Collection<Vehicle> vehicles) {
+        return new HashMap<>();
+    }
+
+    @Override
+    public HashMap<String, Delay> generateDelays(Collection<Vehicle> vehicles) {
+        return new HashMap<>();
+    }
+
+    @Override
+    public int deleteVehicleProblems(int amount) {
+        return 0;
+    }
+
+    @Override
+    public int deleteStopProblems(int amount) {
+        return 0;
+    }
+
+    @Override
+    public int deleteLineProblems(int amount) {
+        return 0;
+    }
+
+
+    @Override
+    public int getLIVE_ENGINE_FREQUENCY_SECONDS() {
+        return LIVE_ENGINE_FREQUENCY_SECONDS;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_FREQUENCY_SECONDS(int LIVE_ENGINE_FREQUENCY_SECONDS) {
+        this.LIVE_ENGINE_FREQUENCY_SECONDS = LIVE_ENGINE_FREQUENCY_SECONDS;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN() {
+        return LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN(int LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN) {
+        this.LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN = LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE() {
+        return LIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE(int LIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE) {
+        this.LIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE = LIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE() {
+        return LIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE(int LIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE) {
+        this.LIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE = LIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE() {
+        return LIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE(int LIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE) {
+        this.LIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE = LIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE() {
+        return LIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE(int LIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE) {
+        this.LIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE = LIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN() {
+        return LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN(int LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN) {
+        this.LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN = LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN() {
+        return LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN(int LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN) {
+        this.LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN = LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN;
+    }
+
+    @Override
+    public int getLIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM() {
+        return LIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM(int LIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM) {
+        this.LIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM = LIVE_ENGINE_MINIMUM_DELAY_SECONDS_FOR_CREATING_DELAY_PROBLEM;
+    }
+
+    @Override
+    public boolean isLIVE_ENGINE_RUN_LIVE() {
+        return LIVE_ENGINE_RUN_LIVE;
+    }
+
+    @Override
+    public void setLIVE_ENGINE_RUN_LIVE(boolean LIVE_ENGINE_RUN_LIVE) {
+        this.LIVE_ENGINE_RUN_LIVE = LIVE_ENGINE_RUN_LIVE;
+    }
+    
+    @Override
+    public void setTimer(Timer timer) {
+
+    }
+
+    @Override
+    public void run() {
+    
+    }
+}

@@ -1,0 +1,193 @@
+<h2>Live Engine Configuration</h2>
+<p>Choose settings to update live engine behaviour.<br>If no value is set, the field will be ignored and remains untouched. </p>
+
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-9">
+    <div style="font-weight: bold; margin-top: 36px;">Following changes do not require a live engine restart:</div>
+    <form style="margin-top: 18px;">
+      <div class="form-group row">
+        <label class="col-5 col-form-label">Should Live Engine be active?</label>
+        <div class="col-2">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input name="runlive" class="form-check-input" type="checkbox" [(ngModel)]="model.LIVE_ENGINE_RUN_LIVE">
+            </label>
+          </div>
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="geneachrun" class="col-5 col-form-label">Number of vehicle problems to generate each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_GENERATE_EACH_RUN"
+            name="geneachrun"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="stopstogen" class="col-5 col-form-label">Number of stop problems to generate each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_GENERATE_EACH_RUN"
+            name="stopstogen"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="linestogen" class="col-5 col-form-label">Number of line problems to generate each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_GENERATE_EACH_RUN"
+            name="linestogen"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="feedbackstogen" class="col-5 col-form-label">Number of feedbacks to generate each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_FEEDBACKS_TO_GENERATE_EACH_RUN"
+            name="feedbackstogen"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="vehiclestogen" class="col-5 col-form-label">Number of vehicle problems to delete each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_VEHICLE_PROBLEMS_TO_DELETE_EACH_RUN"
+            name="vehiclestogen"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="stopstodelete" class="col-5 col-form-label">Number of stop problems to delete each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_STOP_PROBLEMS_TO_DELETE_EACH_RUN"
+            name="stopstodelete"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="linestodelete" class="col-5 col-form-label">Number of line problems to delete each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_NUMBER_OF_LINE_PROBLEMS_TO_DELETE_EACH_RUN"
+            name="linestodelete"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="tourincprob" class="col-5 col-form-label">Probability of tours to increase delay each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_INCREASE_DELAY_EACH_RUN"
+            name="tourincprob"
+            type="number">
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="tourdecprob" class="col-5 col-form-label">Probability of tours to decrease delay each step:</label>
+        <div class="col-2">
+          <input
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_PROBABILITY_OF_TOURS_TO_DECREASE_DELAY_EACH_RUN"
+            name="tourdecprob"
+            type="number">
+        </div>
+      </div>  
+    </form>
+  </div>
+
+  <div class="col-3"></div>
+  <div class="col-9">
+    <div style="font-weight: bold; margin-top: 36px;">Following changes require a live engine restart:</div>
+    <form #restartF="ngForm" style="margin-top: 18px;">
+      <div class="form-group row">
+        <label for="freqsecs" class="col-5 col-form-label">Generation step every n seconds (>= 1):</label>
+        <div class="col-2">
+          <input
+            [formControl]="generationstepControl"
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_FREQUENCY_SECONDS"
+            name="freqsecs"
+            type="number">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="vehiclestodelete" class="col-5 col-form-label">% of vehicles that should have problems at start-up:</label>
+        <div class="col-2">
+          <input
+            [formControl]="vehiclestodeleteControl"
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_STARTING_VEHICLE_PROBLEMS_PERCENTAGE"
+            name="vehiclestodelete"
+            type="number">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="stoppercent" class="col-5 col-form-label">% of stops that should have problems at start-up:</label>
+        <div class="col-2">
+          <input
+            [formControl]="stoppercentControl"
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_STARTING_STOP_PROBLEMS_PERCENTAGE"
+            name="stoppercent"
+            type="number">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="linepercent" class="col-5 col-form-label">% of lines that should have problems at start-up:</label>
+        <div class="col-2">
+          <input
+            [formControl]="linepercentControl"
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_STARTING_LINE_PROBLEMS_PERCENTAGE"
+            name="linepercent"
+            type="number">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="tourpercent" class="col-5 col-form-label">% of tours that should have a delay at start-up:</label>
+        <div class="col-2">
+          <input
+            [formControl]="tourpercentControl"
+            class="form-control"
+            [(ngModel)]="model.LIVE_ENGINE_STARTING_DELAYED_TOURS_PERCENTAGE"
+            name="tourpercent"
+            type="number">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-12" style="margin-bottom: 30px; margin-top: 30px;">
+    <div class="text-center">
+      <button type="button" class="btn btn-secondary" style="margin-right: 12px;" (click)="dumpCSV()">
+        Download CSV Dump
+      </button>
+      <button type="button" class="btn btn-secondary" style="margin-right: 12px;" (click)="resetToDefaults()">
+        Reset to defaults and restart
+      </button>
+      <button type="button" class="btn btn-secondary" style="margin-right: 12px;" 
+        [disabled]="!(tourpercentControl.valid && linepercentControl.valid && stoppercentControl.valid && vehiclestodeleteControl.valid && generationstepControl.valid)"
+        (click)="saveAndRestart()">
+        Save Config &amp; Restart
+      </button>
+      <button type="button" class="btn btn-primary" (click)="save()">
+        Save Config
+      </button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,235 @@
+<p-progressBar [showValue]="false" [value]="loadingProgress" [class.hidden]="loadingProgress===0 || loadingProgress===100"></p-progressBar>
+
+<div class="row" id="dashboard" [style.marginBottom]="'30px'">
+
+  <!-- Left side with different Infos -->
+  <div class="col-xl-5">
+    <h2>Overview</h2>
+
+    <div class="sidebar">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-info text-white">
+              <i class="fa fa-wrench" aria-hidden="true"></i> Open Service Requests
+            </div>
+            <p-scrollPanel [style]="{width: '100%', height: '300px'}" styleClass="scrollpanel" *ngIf="serviceRequestTypes">
+              <ul class="list-group list-group-flush" *ngIf="serviceRequestTypes.length > 0">
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let type of serviceRequestTypes" class="list-group-item li-link" (click)="goToServiceType(type)">
+                    <b>{{type}}</b>: {{serviceRequestTypeGroups[type].length}} {{util.serviceRSingularPlural(serviceRequestTypeGroups[type].length)}}
+                  </li>
+                </ul>
+              </ul>
+              <div *ngIf="serviceRequestTypes.length === 0" class="card-footer text-muted">
+                No open service requests.
+              </div>
+              <br>
+            </p-scrollPanel>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-info text-white">
+              <i class="fa fa-comments" aria-hidden="true"></i> Pending Feedbacks
+            </div>
+            <p-scrollPanel [style]="{width: '100%', height: '300px'}" styleClass="scrollpanel" *ngIf="feedbackTypes">
+              <ul class="list-group list-group-flush" *ngIf="feedbackTypes.length > 0">
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let type of feedbackTypes" class="list-group-item li-link" (click)="goToFeedbackType(type)">
+                    <b>{{type}}</b>: {{feedbackTypeGroups[type].length}} {{util.feedbackSingularPlural(feedbackTypeGroups[type].length)}}
+                  </li>
+                </ul>
+              </ul>
+              <div *ngIf="feedbackTypes.length === 0" class="card-footer text-muted">
+                No pending feedbacks.
+              </div>
+              <br>
+            </p-scrollPanel>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-info text-white">
+              <i class="fa fa-calendar" aria-hidden="true"></i> Events
+            </div>
+            <p-scrollPanel #scrollevents [style]="{width: '100%', height: '300px'}" styleClass="scrollpanel" *ngIf="currentEvents && upcomingEvents">
+              <div class="card-footer text-muted" *ngIf="currentEvents.length > 0">
+                Current
+              </div>
+              <ul class="list-group list-group-flush" *ngIf="currentEvents.length > 0">
+                <li *ngFor="let event of currentEvents" class="list-group-item li-link" (click)="showEventDetail(event)">
+                  {{event.title}}<br>
+                  <span class="small">(until {{util.makeDateStr(event.end)}})</span>
+                </li>
+              </ul>
+              <div class="card-footer text-muted" *ngIf="upcomingEvents.length > 0">
+                Upcoming
+              </div>
+              <ul class="list-group list-group-flush" *ngIf="upcomingEvents.length > 0">
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let event of upcomingEvents" class="list-group-item li-link" (click)="showEventDetail(event)">
+                    {{event.title}}<br>
+                    <span class="small">(starts at {{util.makeDateStr(event.start)}})</span>
+                  </li>
+                </ul>
+              </ul>
+              <div *ngIf="currentEvents.length === 0 && upcomingEvents.length === 0" class="card-footer text-muted">
+                No current and upcoming events.
+              </div>
+              <br>
+            </p-scrollPanel>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-info text-white">
+              <i class="fa fa-plus-square-o" aria-hidden="true"></i> Unassigned Tours
+            </div>
+            <p-scrollPanel [style]="{width: '100%', height: '300px'}" styleClass="scrollpanel" *ngIf="unassignedTours">
+              <ul class="list-group list-group-flush" *ngIf="unassignedTours.length > 0">
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let tour of unassignedTours" class="list-group-item li-link" (click)="goToUnassignedTour(tour)">
+                    <b>Tour {{tour.tourId}}</b> on Line {{tour.name}}<br>
+                    <span class="small">{{util.makeDateOnly(tour.startTime)}}:
+                      {{util.makeTimeOnly(tour.startTime)}} - {{util.makeTimeOnly(tour.endTime)}}</span>
+                  </li>
+                </ul>
+              </ul>
+              <div *ngIf="unassignedTours.length === 0" class="card-footer text-muted">
+                No unassigend tours.
+              </div>
+              <br>
+            </p-scrollPanel>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+
+
+  <!-- Network and Fleet state -->
+  <div class="col-xl-7">
+    <div class="row">
+      <!-- Network State -->
+      <div class="col-md-6">
+        <h2>Network State</h2>
+        <google-chart [data]="networkStateChartData"></google-chart>
+        <div class="card networkstate" *ngIf="redLines.length > 0">
+          <div class="card-header bg-danger text-white">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Critical
+          </div>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let line of redLines" class="list-group-item li-link" (click)="goToLine(line)">
+              <ng-template #tipContent>
+                <p *ngFor="let problem of line.problems" class="info-tooltip">
+                  <b>{{allNetworkData.lineIDtoName[line.lineID]}}</b><br> {{problem.description}} (Severity: {{problem.severity}})
+                </p>
+                <p *ngFor="let stop of line.allStopProblems" class="info-tooltip">
+                  <b [innerHTML]="util.replaceUndergroundStationTextWithIcon(allNetworkData.stopIDtoName[stop.id])"></b><br> {{stop.problem.description}} (Severity: {{stop.problem.severity}})
+                </p>
+              </ng-template>
+              <h5>{{allNetworkData.lineIDtoName[line.lineID]}}</h5> {{line.problems.length}} Line-{{util.problemSingularPlural(line.problems.length)}} | {{line.allStopProblems.length}} Stop-{{util.problemSingularPlural(line.allStopProblems.length)}}
+              <i class="float-right fa fa-info-circle" aria-hidden="true" [ngbTooltip]="tipContent"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="card networkstate" *ngIf="yellowLines.length > 0">
+          <div class="card-header bg-warning text-white">
+            <i class="fa fa-exclamation" aria-hidden="true"></i> Warning
+          </div>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let line of yellowLines" class="list-group-item li-link" (click)="goToLine(line)">
+              <ng-template #tipContent>
+                <p *ngFor="let problem of line.problems" class="info-tooltip">
+                  <b>{{allNetworkData.lineIDtoName[line.lineID]}}</b><br> {{problem.description}} (Severity: {{problem.severity}})
+                </p>
+                <p *ngFor="let stop of line.allStopProblems" class="info-tooltip">
+                  <b [innerHTML]="util.replaceUndergroundStationTextWithIcon(allNetworkData.stopIDtoName[stop.id])"></b><br> {{stop.problem.description}} (Severity: {{stop.problem.severity}})
+                </p>
+              </ng-template>
+              <h5>{{allNetworkData.lineIDtoName[line.lineID]}}</h5> {{line.problems.length}} Line-{{util.problemSingularPlural(line.problems.length)}} | {{line.allStopProblems.length}} Stop-{{util.problemSingularPlural(line.allStopProblems.length)}}
+              <i class="float-right fa fa-info-circle" aria-hidden="true" [ngbTooltip]="tipContent"></i>
+            </li>
+          </ul>
+        </div>
+        <!-- no current problems exist -->
+        <div class="card networkstate" *ngIf="redLines.length === 0 && yellowLines.length === 0 && greenLines.length > 0">
+          <div class="card-header bg-success text-white">
+            <i class="fa fa-check-circle" aria-hidden="true"></i> No Problems!
+          </div>
+        </div>
+        <!-- message if no line exists -->
+        <div class="card networkstate" *ngIf="redLines.length === 0 && yellowLines.length === 0 && greenLines.length === 0">
+          <div class="card-header bg-info text-white">
+            <i class="fa fa-question-circle" aria-hidden="true"></i> No Lines found!
+          </div>
+        </div>
+        <br>
+      </div>
+      <!-- Fleet State -->
+      <div class="col-md-6">
+        <h2>Fleet State</h2>
+        <google-chart [data]="fleetStateChartData"></google-chart>
+        <div class="card fleetstate" *ngIf="redVehiclesCount > 0">
+          <div class="card-header bg-danger text-white">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Critical
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item li-link" *ngFor="let key of vehicleTypes" (click)="goToFleetType('Critical')">
+              <ng-template #tipContentFleetCritical>
+                <p *ngFor="let vehicleDetail of vehicleTypeInfo[key].vehicleIdsCritical" class="info-tooltip">
+                  <b>{{key}} {{vehicleDetail.id}}: </b> {{vehicleDetail.problemCount}} {{util.problemSingularPlural(vehicleDetail.problemCount)}}
+                </p>
+              </ng-template>
+              <h5>{{vehicleTypeInfo[key].vehicleIdsCritical.length}} {{vehicleTypeInfo[key].heading}}
+                  <i class="float-right fa {{vehicleTypeInfo[key].icon}}" aria-hidden="true"></i>
+                </h5> with {{vehicleTypeInfo[key].criticalProblemCount}} {{util.problemSingularPlural(vehicleTypeInfo[key].criticalProblemCount)}}
+              <i class="fa fa-info-circle" aria-hidden="true" [ngbTooltip]="tipContentFleetCritical"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="card fleetstate" *ngIf="yellowVehiclesCount > 0">
+          <div class="card-header bg-warning text-white">
+            <i class="fa fa-exclamation" aria-hidden="true"></i> Warning
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item li-link" *ngFor="let key of vehicleTypes" (click)="goToFleetType('Warning')">
+              <ng-template #tipContentFleetWarning>
+                <p *ngFor="let vehicleDetail of vehicleTypeInfo[key].vehicleIdsWarning" class="info-tooltip">
+                  <b>{{key}} {{vehicleDetail.id}}: </b> {{vehicleDetail.problemCount}} {{util.problemSingularPlural(vehicleDetail.problemCount)}}
+                </p>
+              </ng-template>
+              <h5>{{vehicleTypeInfo[key].vehicleIdsWarning.length}} {{vehicleTypeInfo[key].heading}}
+                  <i class="float-right fa {{vehicleTypeInfo[key].icon}}" aria-hidden="true"></i>
+                </h5> with {{vehicleTypeInfo[key].warningProblemCount}} {{util.problemSingularPlural(vehicleTypeInfo[key].warningProblemCount)}}
+              <i class="fa fa-info-circle" aria-hidden="true" [ngbTooltip]="tipContentFleetWarning"></i>
+            </li>
+          </ul>
+        </div>
+        <!-- no current problems exist -->
+        <div class="card fleetstate" *ngIf="redVehiclesCount === 0 && yellowVehiclesCount === 0 && greenVehiclesCount > 0">
+          <div class="card-header bg-success text-white">
+            <i class="fa fa-check-circle" aria-hidden="true"></i> No Problems!
+          </div>
+        </div>
+
+        <!-- message if no vehicle exists -->
+        <div class="card fleetstate" *ngIf="redVehiclesCount === 0 && yellowVehiclesCount === 0 && greenVehiclesCount === 0">
+          <div class="card-header bg-info text-white">
+            <i class="fa fa-question-circle" aria-hidden="true"></i> No Vehicles found!
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+
+
+        <app-modal-wrapper #eventdetail selectedComponent="event-detail"></app-modal-wrapper>

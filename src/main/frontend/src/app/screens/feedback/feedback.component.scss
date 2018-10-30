@@ -1,0 +1,11 @@
+/* Fix for hovering on green finished line */
+/deep/
+.row-finished:hover .datatable-body-cell {
+  background-color: #228C3A !important;
+}
+
+/* Fix for button in green-finished line */
+/deep/
+.row-finished .datatable-body-cell .btn-outline-dark {
+  background-color: #ffffff !important;
+}

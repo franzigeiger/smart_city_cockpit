@@ -1,0 +1,92 @@
+{
+    "d": {
+        "results": [
+            {
+                "ChangedBy": "Uni Augsburg03",
+                "CompletedOnDate": null,
+                "ObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                "ApprovalStatusCode": "",
+                "CompletionDueDate": "/Date(1510185600000)/",
+                "ContractID": "",
+                "CreatedBy": "Uni Augsburg03",
+                "CreationDate": "/Date(1510012800000)/",
+                "Customer": "Uni Augsburg Gruppe 03",
+                "CustomerID": "4000562",
+                "ID": "383",
+                "IncidentCategoryName": {
+                    "content": ""
+                },
+                "ActivityCategoryName": {
+                    "content": ""
+                },
+                "CauseCategoryName": {
+                    "content": ""
+                },
+                "InitialReviewDueDate": "/Date(1510012800000)/",
+                "InstallationPointID": "",
+                "InstalledBaseID": "",
+                "LastChangeDate": "/Date(1510012800000)/",
+                "Name": {
+                    "content": "Very Important Ticket"
+                },
+                "ObjectServiceIssueCategoryID": "",
+                "Partner": "",
+                "PartnerID": "",
+                "ProcessingTypeCode": "SRRQ",
+                "ProductID": "",
+                "SerialID": "",
+                "ServiceAndSupportTeam": "SERVICE",
+                "AssignedTo": "8000000313",
+                "AssignedToName": {
+                    "content": "Uni Augsburg03"
+                },
+                "ProductCategoryDescription": "",
+                "InitialResponseDate": null,
+                "Contact": "Max Mustermann",
+                "ParentServiceRequest": "",
+                "CreationDateTime": "/Date(1510070981842)/",
+                "LastChangeDateTime": "/Date(1510070981842)/",
+                "ApprovalStatusCodeText": "",
+                "DataOriginTypeCodeText": "Manual data entry",
+                "ServicePriorityCodeText": "Urgent",
+                "ServiceRequestClassificationCodeText": "",
+                "ServiceRequestLifeCycleStatusCodeText": "Open",
+                "ServiceRequestUserLifeCycleStatusCodeText": "Open",
+                "ServiceRequestItem": [],
+                "ServiceRequestDescription": [
+                    {
+                        "ParentObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                        "ObjectID": "00163E184B981EE7B0FAC1EEB8B11150",
+                        "TypeCode": "10004",
+                        "LanguageCode": "",
+                        "Text": "Our train is dead. Please help!",
+                        "CreatedOn": "/Date(1510070981842)/",
+                        "UpdatedOn": "/Date(1510070981842)/",
+                        "CreatedBy": "Uni Augsburg03",
+                        "LastUpdatedBy": "Uni Augsburg03",
+                        "AuthorName": "",
+                        "AuthorUUID": null,
+                        "ETag": "/Date(1510070981842)/",
+                        "TypeCodeText": "Incident Description",
+                        "LanguageCodeText": ""
+                    }
+                ],
+                "ServiceRequestHistoricalVersion": [
+                    {
+                        "ETag": "20171107160941.8428440 ",
+                        "ObjectID": "00163E184B981EE7B0FAC208BCE65150",
+                        "ParentObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                        "ServiceTermsServicePriorityCode": "2",
+                        "EscalationStatusCode": "1",
+                        "ServiceRequestLifeCycleStatusCode": "1",
+                        "EndDateTime": "/Date(253402128000000)/",
+                        "StartDateTime": "/Date(1510070981842)/",
+                        "ServiceTermsServiceRequestUserLifeCycleStatusCodeText": "Open",
+                        "ServiceTermsServicePriorityCodeText": "Urgent",
+                        "ServiceRequestLifeCycleStatusCodeText": "Open"
+                    }
+                ]
+            }
+        ]
+    }
+}

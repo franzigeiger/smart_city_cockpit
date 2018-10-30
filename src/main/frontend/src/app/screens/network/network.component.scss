@@ -1,0 +1,28 @@
+.filterOn {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0069d9;
+}
+
+/deep/ .logCard {
+  margin: 10px;
+  flex-basis: 200px;
+  flex-grow: 1;
+}
+
+/** Set height of network map to 100% in full-screen-mode */
+.map:-moz-full-screen {
+  height: 100%;
+}
+
+.map:-webkit-full-screen {
+  height: 100%;
+}
+
+.map:-ms-fullscreen {
+  height: 100%;
+}
+
+.map:fullscreen {
+  height: 100%;
+}

@@ -1,0 +1,182 @@
+<h2>Events Overview</h2>
+
+<div class="row">
+  <div class="col-12">
+    <div>
+      <button
+        type="button"
+        class="btn"
+        (click)="showOldEvents = false;"
+        [class.btn-dark]="!showOldEvents"
+        [class.btn-outline-dark]="showOldEvents">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        Current and upcoming events
+      </button>
+      <button
+        type="button"
+        class="btn"
+        (click)="showOldEvents = true;"
+        [class.btn-dark]="showOldEvents"
+        [class.btn-outline-dark]="!showOldEvents">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        Events in the past
+      </button>
+
+      <button
+        *ngIf="!showOldEvents"
+        type="button"
+        class="btn btn-success float-right"
+        (click)="addEvent()">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        Add Event
+      </button>
+    </div>
+    <br>
+    <div [ngStyle]="styles.header">
+      <app-table-filter
+        #eventsfilter
+        [preselect]="eventsPreselect"
+        [columns]="eventsColumns"
+        [callback]="filterCurrentEventsTable"></app-table-filter>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row" *ngIf="!showOldEvents">
+  <!-- Current events -->
+  <div class="col-xl-6">
+    <div [ngStyle]="styles.container">
+      <h3>Current events</h3>
+      <div [ngStyle]="styles.table">
+        <ngx-datatable
+          #tablecurrent
+          class="material"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'flex'"
+          [rows]="filteredCurrentEventsData"
+          [sorts]="[{prop: 'endDateTimeFormatted', dir: 'asc'}]"
+          [rowHeight]="'auto'"
+          (activate)="onActivate($event)"
+          [headerHeight]="50">
+
+          <!-- Column Templates -->
+          <ngx-datatable-column
+            *ngFor="let col of eventsColumns"
+            [name]="col.name"
+            [prop]="col.prop"
+            [flexGrow]="col.flexGrow"
+            [cellClass]="getCellClass"
+            [resizeable]="false">
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [flexGrow]="1"
+            name="Actions"
+            [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-sm"
+                (click)="showDetail(row)">
+                <i class='fa fa-search' aria-hidden='true'></i>
+              </button>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming Events-->
+  <div class="col-xl-6">
+    <div [ngStyle]="styles.container">
+      <h3>Upcoming events</h3>
+      <div [ngStyle]="styles.table">
+        <ngx-datatable
+          #tableupcoming
+          class="material"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'flex'"
+          [rows]="filteredUpcomingEventsData"
+          [sorts]="[{prop: 'startDateTimeFormatted', dir: 'asc'}]"
+          [rowHeight]="'auto'"
+          (activate)="onActivate($event)"
+          [headerHeight]="50">
+
+          <!-- Column Templates -->
+          <ngx-datatable-column
+            *ngFor="let col of eventsColumns"
+            [name]="col.name"
+            [prop]="col.prop"
+            [flexGrow]="col.flexGrow"
+            [cellClass]="getCellClass"
+            [resizeable]="false">
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [flexGrow]="1"
+            name="Actions"
+            [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-sm"
+                (click)="showDetail(row)">
+                <i class='fa fa-search' aria-hidden='true'></i>
+              </button>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Old Events-->
+<div class="row" *ngIf="showOldEvents">
+  <div class="col-12">
+
+    <div [ngStyle]="styles.container">
+      <h3>Old Events</h3>
+      <div [ngStyle]="styles.table">
+        <ngx-datatable
+          #tableold
+          class="material"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'flex'"
+          [rows]="filteredOldEventsData"
+          [sorts]="[{prop: 'endDateTimeFormatted', dir: 'desc'}]"
+          [rowHeight]="'auto'"
+          (activate)="onActivate($event)"
+          [headerHeight]="50">
+
+          <!-- Column Templates -->
+          <ngx-datatable-column
+            *ngFor="let col of eventsColumns"
+            [name]="col.name"
+            [prop]="col.prop"
+            [flexGrow]="col.flexGrow"
+            [cellClass]="getCellClass"
+            [resizeable]="false">
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [flexGrow]="1"
+            name="Actions"
+            [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-sm"
+                (click)="showDetail(row)">
+                <i class='fa fa-search' aria-hidden='true'></i>
+              </button>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-modal-wrapper #manageevent selectedComponent="manage-event"></app-modal-wrapper>
+<app-modal-wrapper #eventdetail selectedComponent="event-detail"></app-modal-wrapper>
+

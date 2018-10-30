@@ -1,0 +1,73 @@
+.linelink, .fleetlink {
+  color: #212529;
+}
+
+.info-tooltip {
+  min-width: 200px;
+}
+
+.fleetstate h5, .networkstate h5 {
+  display: inline;
+}
+
+#dashboard .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 20px;
+}
+
+.li-link {
+  cursor: pointer;
+}
+
+.li-link:hover {
+  background: #eeeeee;
+}
+
+// Fix for hiding horizontal scrollbar
+/deep/ .ui-scrollpanel-bar-x {
+  display: none;
+}
+
+/deep/
+.scrollpanel .ui-scrollpanel-bar {
+  background-color: #17a2b8; // info
+  opacity: 1;
+  transition: background-color .3s;
+}
+
+/deep/
+.scrollpanel .ui-scrollpanel-bar:hover {
+  background-color: #343a40; // dark
+}
+
+/deep/
+.ui-progressbar-determinate {
+  border: 0 none;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  height: .2em;
+  position: fixed;
+  z-index: 999;
+}
+
+/deep/
+.ui-progressbar.ui-progressbar-determinate .ui-progressbar-value {
+  background: #17a2b8; //info
+}
+
+/deep/
+p-progressBar .ui-corner-all {
+  border-radius: 0;
+}
+
+/deep/
+.ui-progressbar {
+  opacity: 1;
+}
+
+/deep/
+.hidden .ui-progressbar {
+  opacity: 0;
+  transition: opacity 4s ease-in-out;
+}

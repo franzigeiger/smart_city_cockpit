@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h2>Newsfeed</h2>
+      <ngx-datatable class="material" [rows]="tableData" [rowHeight]="'auto'" [headerHeight]="50"
+                     [loadingIndicator]="loadingIndicator" (activate)="onActivate($event)">>
+        <ngx-datatable-column name="" prop="type" [width]="40" [cellClass]="'use-pointer'" [resizeable]="false">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Line" [width]="175" [cellClass]="'use-pointer'" [resizeable]="false">
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Status" [width]="115" [cellClass]="'use-pointer'" [resizeable]="false">
+          <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+            <div [ngStyle]="statusStyles[row.status].style">
+              <span> {{row.status}}
+              <i class="fa fa-{{statusStyles[row.status].icon}}" aria-hidden="true"></i>
+              </span>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Actions" [width]="105" [resizeable]="false">>
+          <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+            <button type="button" title="Filter" class="btn btn-outline-dark btn-sm"
+                    (click)="filterNetwork($event, row, rowIndex)">
+              <i class='fa fa-filter' aria-hidden='true'></i>
+            </button>
+            <button type="button" title="Details" class="btn btn-outline-dark btn-sm"
+                    (click)="goToLine($event, row, rowIndex)">
+              <i class='fa fa-search' aria-hidden='true'></i>
+            </button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+    <div class="col-sm">
+        <h2>Network Map
+        <span class="float-right">
+          <span class="small">Map Style:</span>
+          <select class="form-control form-control-sm" [ngStyle]="selectLayerStyle" [(ngModel)]="selectedLayer" (change)="changeMapLayer()">
+            <option *ngFor="let layer of layerList" [value]="layer.id">{{layer.itemName}}</option>
+          </select>
+        </span>
+        </h2>
+
+      <div id="map" class="map"></div>
+    </div>
+  </div>
+  <hr>
+  <h2>Problem Log</h2>
+  <div id="problemLog" style="display: flex; flex-wrap: wrap; ">
+    <div class="card logCard" *ngFor="let card of problemLogCards" [attr.data-lineid]="card.lineID">
+      <div class="card-body">
+        <h5 class="card-title" [innerHTML]="util.replaceUndergroundStationTextWithIcon(card.title)"></h5>
+        <p class="card-text">{{card.description}}</p>
+        <a [href]="card.url" class={{card.btn}}>Go to {{card.type}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<svg id="gradients"></svg>

@@ -1,0 +1,23 @@
+<h2>Shift plan for {{vehicleType}} <i>#{{vehicleID}}</i>
+  <span [style.marginLeft]="'15px'">
+  <i *ngIf="vehicleType==='Tube'" class="shiftPlan fa fa-subway" aria-hidden="true"></i>
+  <i *ngIf="vehicleType==='Bus'" class="shiftPlan fa fa-bus" aria-hidden="true"></i>
+  </span>
+</h2>
+<div [style.margin]="'20px 0 10px 0'" [style.textAlign]="'center'">
+  <label for="weekSelector">Calendar week: <b>{{calWeek}}</b></label>
+  <p-calendar [(ngModel)]="date" (onSelect)="changeDate()" (onInput)="changeDate()" (onClearClick)="changeDate()" name="dateTime" showIcon="true" showButtonBar="true">
+  </p-calendar>
+  <button type="button" class="btn btn-success" (click)="addTourToVehicle()" [style.float]="'right'" [style.marginRight]="'15px'">
+  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  Add Tour to {{vehicleType}}
+</button>
+</div>
+<div [style.marginRight]="'15px'">
+  <google-chart #chart *ngIf="shiftPlanData.dataTable.length > 1; else noData" (chartSelect)="onSelect($event)" [data]="shiftPlanData"></google-chart>
+</div>
+<ng-template #noData>
+  No shift plan data found for #{{vehicleID}}.
+</ng-template>
+<app-modal-wrapper #manageShiftPlan selectedComponent="shift-plan"></app-modal-wrapper>
+<app-modal-wrapper #manageTourToVehicle selectedComponent="tour-to-vehicle"></app-modal-wrapper>

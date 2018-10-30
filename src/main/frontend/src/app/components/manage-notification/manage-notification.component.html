@@ -1,0 +1,63 @@
+  <div class="modal-header">
+    <h4 class="modal-title">{{title}} Notification</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <form #notificationForm="ngForm">
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="line">Notification on line</label>
+        <select 
+          class="form-control" 
+          id="line" 
+          required 
+          [(ngModel)]="model.name" 
+          name="name"
+          (ngModelChange)="filterStops($event)">
+          <option *ngFor="let p of payload.networkData" [value]="p.name">{{p.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="stops">Displayed at stops</label>
+        <angular2-multiselect 
+          name="stops"
+          id="stops"
+          required
+          [settings]="multiSelectSettings"
+          [data]="availableStops" 
+          [(ngModel)]="model.stops"></angular2-multiselect>
+      </div>
+<!--         <select 
+          multiple
+          class="form-control" 
+          id="stops" 
+          required 
+          [(ngModel)]="model.stops" 
+          name="stops">
+          <option *ngFor="let s of availableStops" [value]="s.name">{{s.name}}</option>
+        </select>
+ -->
+
+      <div class="form-group">
+        <label for="description">Notify passengers</label>
+        <textarea rows="4" class="form-control" id="description" required
+          [(ngModel)]="model.description" name="description">
+        </textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button 
+        type="button" 
+        class="btn btn-success" 
+        (click)="activeModal.close(model)"
+        [disabled]="!notificationForm.form.valid">Save Notification</button>
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+    </div>
+
+  </form>
+
+ 

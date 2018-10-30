@@ -1,0 +1,87 @@
+{
+  "vehicles": [
+    {
+      "id": "veh1",
+      "name": "Bombardier XYZ",
+      "seats": 1234,
+      "type": "tube",
+      "position": {
+        "prevStop": "940GZZLUWYC",
+        "nextStop": "940GZZLUSGP",
+        "isOnPrev": false
+      },
+      "vehicleProblems": [
+        "dirty",
+        "broken",
+        "accident"
+      ],
+      "finalStop": "940GZZLUEAC"
+    },
+    {
+      "id": "veh2",
+      "name": "Siemens XYZ",
+      "seats": 1234,
+      "type": "tube",
+      "position": {
+        "prevStop": "940GZZLUKSL",
+        "nextStop": "940GZZLUWJN",
+        "isOnPrev": false
+      },
+      "vehicleProblems": [],
+      "finalStop": "940GZZLUHAW"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "not1",
+      "stops": [
+        "940GZZLUSKT",
+        "940GZZLUNWY"
+      ],
+      "description": "Hohes Verkehrsaufkommen."
+    },
+    {
+      "id": "not2",
+      "stops": [
+        "940GZZLUQPS"
+      ],
+      "description": "Achtung Feuerwehreinsatz."
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "feed1",
+      "type": "station",
+      "targetId": "940GZZLUKEN",
+      "description": "Mülleimer voll",
+      "timestamp": 1203491230,
+      "author": "anonymous"
+    },
+    {
+      "id": "feed2",
+      "type": "vehicle",
+      "targetId": "veh1",
+      "description": "Motor extrem laut",
+      "timestamp": 1203491290,
+      "author": "anonymous"
+    },
+    {
+      "id": "feed3",
+      "type": "line",
+      "targetId": "bakerloo",
+      "description": "Viel zu voll",
+      "timestamp": 1203491400,
+      "author": "anonymous"
+    }
+  ],
+  "services": [
+    {
+      "id": "abc",
+      "Pflichtfelder von MHP": true
+    },
+    {
+      "id": "def",
+      "Pflichtfelder von MHP": true
+    }
+  ]
+}

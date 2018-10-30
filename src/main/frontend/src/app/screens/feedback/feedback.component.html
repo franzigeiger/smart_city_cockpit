@@ -1,0 +1,66 @@
+<div id="feedback" class="container-fluid">
+  <h2>Feedback Overview</h2>
+  <br>
+  <div [ngStyle]="styles.header">
+    <app-table-filter #feedbackfilter [preselect]="feedbackPreselect" [columns]="feedbackColumns" [callback]="filterFeedbackTable"></app-table-filter>
+    <div></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xl-6">
+      <!-- Current feedbacks -->
+      <div [ngStyle]="styles.container">
+        <h3>Pending Feedbacks</h3>
+
+        <div [ngStyle]="styles.table">
+          <ngx-datatable #table class="material" [columnMode]="'flex'" [rows]="filteredFeedbackData" [rowHeight]="60" [headerHeight]="50" [footerHeight]="50" [limit]="10" [sorts]="[{prop: 'timestampFormatted', dir: 'desc'}]" [loadingIndicator]="loadingIndicator"
+            (activate)="onActivate($event)">
+
+            <!-- Column Templates -->
+            <ngx-datatable-column *ngFor="let col of feedbackColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="col.flexGrow" [cellClass]="getCellClass" [resizeable]="false" [resizeable]="false">
+            </ngx-datatable-column>
+            <ngx-datatable-column [flexGrow]="1" name="Actions" [resizeable]="false">
+              <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+                <button type="button" class="btn btn-outline-dark btn-sm" (click)="showDetail(row)">
+                  <i class='fa fa-search' aria-hidden='true'></i>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="finishFeedback(row, rowIndex)">
+                  <i class='fa fa-check' aria-hidden='true'></i>
+                </button>
+                <button *ngIf="row.type === 'Stop' || row.type === 'Vehicle'" type="button" class="btn btn-outline-primary btn-sm" (click)="openServiceRequest(row, rowIndex)">
+                  <i class='fa fa-wrench' aria-hidden='true'></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <!-- Finished Feedbacks -->
+      <div [ngStyle]="styles.container">
+        <h3>Finished Feedbacks</h3>
+
+        <div [ngStyle]="styles.table">
+          <ngx-datatable #tableFinished class="material" [columnMode]="'flex'" [rows]="filteredFinishedFeedbackData" [rowHeight]="60" [headerHeight]="50" [footerHeight]="50" [rowClass]="getRowClass" [limit]="10" [loadingIndicator]="loadingIndicator" (activate)="onActivate($event)">
+
+            <!-- Column Templates -->
+            <ngx-datatable-column *ngFor="let col of feedbackColumns" [name]="col.name" [prop]="col.prop" [flexGrow]="col.flexGrow" [cellClass]="getCellClass" [resizeable]="false">
+            </ngx-datatable-column>
+            <ngx-datatable-column [flexGrow]="1" name="Actions" [resizeable]="false">
+              <ng-template ngx-datatable-cell-template let-row="row" let-rowIndex="rowIndex">
+                <button type="button" class="btn btn-outline-dark btn-sm" (click)="showDetail(row)">
+                  <i class='fa fa-search' aria-hidden='true'></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-modal-wrapper #feedbackdetail selectedComponent="feedback-detail"></app-modal-wrapper>
+<app-modal-wrapper #manageservice selectedComponent="manage-service"></app-modal-wrapper>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!--<property name="connection.driver_class">org.postgresql.Driver</property>-->
+
+        <!-- Database Marcel -->
+        <!--<property name="connection.url">jdbc:postgresql://henrich-24.de:10864/scc?sslmode=require</property>
+        <property name="connection.username">scc</property>
+        <property name="connection.password">qJzjGwoZyLGuF9oAjyVK</property>-->
+
+        <!-- Database Heroku -->
+        <!--<property name="connection.url">jdbc:postgresql://ec2-46-137-174-67.eu-west-1.compute.amazonaws.com:5432/d4k0imdvuqij82?sslmode=require</property>
+        <property name="connection.username">qihtlgzuxiseey</property>
+        <property name="connection.password">4adaf28ef1f3712a46a21353a1869ba5d3518f066ca6b2a392acb8446db7df24</property>-->
+
+
+        <property name="jdbc.batch_size">50</property>
+        <property name="connection.url">jdbc:postgresql://henrich-24.de:10864/scc</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+
+        <mapping class="de.se.DB.hibernate_models.Feedbackdb"/>
+        <mapping class="de.se.DB.hibernate_models.Linedb"/>
+        <mapping class="de.se.DB.hibernate_models.Notificationdb"/>
+        <mapping class="de.se.DB.hibernate_models.Stopdb"/>
+        <mapping class="de.se.DB.hibernate_models.Stopsinlinedb"/>
+        <mapping class="de.se.DB.hibernate_models.Tourdb"/>
+        <mapping class="de.se.DB.hibernate_models.Vehicledb"/>
+        <mapping class="de.se.DB.hibernate_models.Timebetweenstopsdb"/>
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,356 @@
+{
+    "d": {
+        "results": [
+            {
+                "__metadata": {
+                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')",
+                    "type": "c4codata.ServiceRequest",
+                    "etag": "W/\"datetimeoffset'2017-11-07T16%3A09%3A41.8428440Z'\""
+                },
+                "ChangedBy": "Uni Augsburg03",
+                "CustomerMainContactPartyID": "4000563",
+                "RequestAssignmentStatusCode": "1",
+                "CompletedOnDate": null,
+                "ObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                "ActivityServiceIssueCategoryID": "",
+                "ApprovalStatusCode": "",
+                "CauseServiceIssueCategoryID": "",
+                "CompletionDueDate": "/Date(1510185600000)/",
+                "ContractID": "",
+                "CreatedBy": "Uni Augsburg03",
+                "CreationDate": "/Date(1510012800000)/",
+                "Customer": "Uni Augsburg Gruppe 03",
+                "CustomerID": "4000562",
+                "DataOriginTypeCode": "1",
+                "ID": "383",
+                "IncidentCategoryName": {
+                    "__metadata": {
+                        "type": "c4codata.MEDIUM_Name"
+                    },
+                    "content": ""
+                },
+                "ActivityCategoryName": {
+                    "__metadata": {
+                        "type": "c4codata.MEDIUM_Name"
+                    },
+                    "content": ""
+                },
+                "CauseCategoryName": {
+                    "__metadata": {
+                        "type": "c4codata.MEDIUM_Name"
+                    },
+                    "content": ""
+                },
+                "IncidentServiceIssueCategoryID": "",
+                "InitialReviewDueDate": "/Date(1510012800000)/",
+                "InstallationPointID": "",
+                "InstalledBaseID": "",
+                "ItemListServiceRequestExecutionLifeCycleStatusCode": "1",
+                "LastChangeDate": "/Date(1510012800000)/",
+                "LastResponseOnDate": null,
+                "Name": {
+                    "__metadata": {
+                        "type": "c4codata.EXTENDED_Name"
+                    },
+                    "languageCode": "EN",
+                    "content": "Very Important Ticket"
+                },
+                "NextResponseDueDate": null,
+                "ObjectCategoryName": {
+                    "__metadata": {
+                        "type": "c4codata.MEDIUM_Name"
+                    },
+                    "content": ""
+                },
+                "ObjectServiceIssueCategoryID": "",
+                "Partner": "",
+                "PartnerID": "",
+                "ProcessingTypeCode": "SRRQ",
+                "ProductID": "",
+                "ReferenceDate": null,
+                "ReportedForEmail": "",
+                "ReportedForPartyID": "",
+                "ReporterEmail": "",
+                "ReporterPartyID": "4000563",
+                "RequestedEnd": "2017-11-09T23:00:00Z",
+                "RequestedStart": "2017-11-08T23:00:00Z",
+                "RoleCode": "8",
+                "SalesTerritoryID": "",
+                "SerialID": "",
+                "ServiceCategoryName": {
+                    "__metadata": {
+                        "type": "c4codata.MEDIUM_Name"
+                    },
+                    "content": ""
+                },
+                "ServiceIssueCategoryID": "",
+                "ServiceLevelAgreement": "",
+                "ServicePriorityCode": "2",
+                "ServiceRequestClassificationCode": "",
+                "ServiceRequestLifeCycleStatusCode": "1",
+                "ServiceTechnician": "",
+                "ServiceTechnicianTeam": "",
+                "WarrantyDescription": "",
+                "WarrantyFrom": null,
+                "WarrantyTo": null,
+                "ServiceAndSupportTeam": "SERVICE",
+                "ServiceRequestUserLifeCycleStatusCode": "1",
+                "AssignedTo": "8000000313",
+                "EscalationStatus": "1",
+                "AssignedToName": {
+                    "__metadata": {
+                        "type": "c4codata.ENCRYPTED_LONG_Name"
+                    },
+                    "languageCode": "EN",
+                    "content": "Uni Augsburg03"
+                },
+                "ProductCategoryDescription": "",
+                "InitialResponseDate": null,
+                "Contact": "Max Mustermann",
+                "ParentServiceRequest": "",
+                "ETag": "/Date(1510070981842)/",
+                "CreationDateTime": "/Date(1510070981842)/",
+                "LastChangeDateTime": "/Date(1510070981842)/",
+                "RequestedStartTimeZoneCode": "CET",
+                "RequestedEndTimeZoneCode": "CET",
+                "RequestAssignmentStatusCodeText": "Processor Action",
+                "ApprovalStatusCodeText": "",
+                "DataOriginTypeCodeText": "Manual data entry",
+                "ItemListServiceRequestExecutionLifeCycleStatusCodeText": "Open",
+                "ProcessingTypeCodeText": "Service Request",
+                "RoleCodeText": "Service Point",
+                "ServicePriorityCodeText": "Urgent",
+                "ServiceRequestClassificationCodeText": "",
+                "ServiceRequestLifeCycleStatusCodeText": "Open",
+                "ServiceRequestUserLifeCycleStatusCodeText": "Open",
+                "EscalationStatusText": "Not Escalated",
+                "RequestedStartTimeZoneCodeText": "Central Europe",
+                "RequestedEndTimeZoneCodeText": "Central Europe",
+                "ServiceRequestItem": [],
+                "ServiceRequestAttachmentFolder": {
+                    "__deferred": {
+                        "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestAttachmentFolder"
+                    }
+                },
+                "ServiceRequestBusinessTransactionDocumentReference": {
+                    "__deferred": {
+                        "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestBusinessTransactionDocumentReference"
+                    }
+                },
+                "ServiceRequestDescription": [
+                    {
+                        "__metadata": {
+                            "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestDescriptionCollection('00163E184B981EE7B0FAC1EEB8B11150')",
+                            "type": "c4codata.ServiceRequestDescription",
+                            "etag": "W/\"datetimeoffset'2017-11-07T16%3A09%3A41.8428440Z'\""
+                        },
+                        "ParentObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                        "ObjectID": "00163E184B981EE7B0FAC1EEB8B11150",
+                        "TypeCode": "10004",
+                        "LanguageCode": "",
+                        "Text": "Our train is dead. Please help!",
+                        "CreatedOn": "/Date(1510070981842)/",
+                        "UpdatedOn": "/Date(1510070981842)/",
+                        "CreatedBy": "Uni Augsburg03",
+                        "LastUpdatedBy": "Uni Augsburg03",
+                        "AuthorName": "",
+                        "AuthorUUID": null,
+                        "ETag": "/Date(1510070981842)/",
+                        "TypeCodeText": "Incident Description",
+                        "LanguageCodeText": ""
+                    }
+                ],
+                "ServicePointLocationAddress": {
+                    "__deferred": {
+                        "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServicePointLocationAddress"
+                    }
+                },
+                "ServiceRequestHistoricalVersion": [
+                    {
+                        "__metadata": {
+                            "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestHistoricalVersionCollection('00163E184B981EE7B0FAC208BCE65150')",
+                            "type": "c4codata.ServiceRequestHistoricalVersion",
+                            "etag": "W/\"'20171107160941.8428440%20'\""
+                        },
+                        "ETag": "20171107160941.8428440 ",
+                        "ObjectID": "00163E184B981EE7B0FAC208BCE65150",
+                        "ParentObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                        "SalesAndServiceBusinessAreaServiceOrganisationUUID": "00163E11-A662-1EE6-88E8-0DC32A222B26",
+                        "MainIncidentServiceIssueCategoryCatalogueID": "",
+                        "ProcessorPartyUUID": "00163E11-A66C-1EE7-AEAA-AF4D8FBCDECB",
+                        "ServiceSupportTeamPartyUUID": "00163E11-A662-1EE6-88E8-0DC32A222B26",
+                        "ServiceTermsServiceRequestUserLifeCycleStatusCode": "1",
+                        "ServiceTermsServicePriorityCode": "2",
+                        "EscalationStatusCode": "1",
+                        "ServiceRequestLifeCycleStatusCode": "1",
+                        "EndDateTime": "/Date(253402128000000)/",
+                        "StartDateTime": "/Date(1510070981842)/",
+                        "MainIncidentServiceIssueCategoryID": "",
+                        "ServiceTermsServiceIssueCategoryID": "",
+                        "ServiceTermsServiceIssueCategoryCatalogueID": "",
+                        "ServiceTermsServiceRequestUserLifeCycleStatusCodeText": "Open",
+                        "ServiceTermsServicePriorityCodeText": "Urgent",
+                        "EscalationStatusCodeText": "Not Escalated",
+                        "ServiceRequestLifeCycleStatusCodeText": "Open",
+                        "ServiceRequest": {
+                            "__metadata": {
+                                "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')",
+                                "type": "c4codata.ServiceRequest",
+                                "etag": "W/\"datetimeoffset'2017-11-07T16%3A09%3A41.8428440Z'\""
+                            },
+                            "ChangedBy": "Uni Augsburg03",
+                            "CustomerMainContactPartyID": "4000563",
+                            "RequestAssignmentStatusCode": "1",
+                            "CompletedOnDate": null,
+                            "ObjectID": "00163E184B981EE7B0FABDB739CE714E",
+                            "ActivityServiceIssueCategoryID": "",
+                            "ApprovalStatusCode": "",
+                            "CauseServiceIssueCategoryID": "",
+                            "CompletionDueDate": "/Date(1510185600000)/",
+                            "ContractID": "",
+                            "CreatedBy": "Uni Augsburg03",
+                            "CreationDate": "/Date(1510012800000)/",
+                            "Customer": "Uni Augsburg Gruppe 03",
+                            "CustomerID": "4000562",
+                            "DataOriginTypeCode": "1",
+                            "ID": "383",
+                            "IncidentCategoryName": {
+                                "__metadata": {
+                                    "type": "c4codata.MEDIUM_Name"
+                                },
+                                "content": ""
+                            },
+                            "ActivityCategoryName": {
+                                "__metadata": {
+                                    "type": "c4codata.MEDIUM_Name"
+                                },
+                                "content": ""
+                            },
+                            "CauseCategoryName": {
+                                "__metadata": {
+                                    "type": "c4codata.MEDIUM_Name"
+                                },
+                                "content": ""
+                            },
+                            "IncidentServiceIssueCategoryID": "",
+                            "InitialReviewDueDate": "/Date(1510012800000)/",
+                            "InstallationPointID": "",
+                            "InstalledBaseID": "",
+                            "ItemListServiceRequestExecutionLifeCycleStatusCode": "1",
+                            "LastChangeDate": "/Date(1510012800000)/",
+                            "LastResponseOnDate": null,
+                            "Name": {
+                                "__metadata": {
+                                    "type": "c4codata.EXTENDED_Name"
+                                },
+                                "languageCode": "E",
+                                "content": "Very Important Ticket"
+                            },
+                            "NextResponseDueDate": null,
+                            "ObjectCategoryName": {
+                                "__metadata": {
+                                    "type": "c4codata.MEDIUM_Name"
+                                },
+                                "content": ""
+                            },
+                            "ObjectServiceIssueCategoryID": "",
+                            "Partner": "",
+                            "PartnerID": "",
+                            "ProcessingTypeCode": "SRRQ",
+                            "ProductID": "",
+                            "ReferenceDate": null,
+                            "ReportedForEmail": "",
+                            "ReportedForPartyID": "",
+                            "ReporterEmail": "",
+                            "ReporterPartyID": "4000563",
+                            "RequestedEnd": "2017-11-09T23:00:00Z",
+                            "RequestedStart": "2017-11-08T23:00:00Z",
+                            "RoleCode": "8",
+                            "SalesTerritoryID": "",
+                            "SerialID": "",
+                            "ServiceCategoryName": {
+                                "__metadata": {
+                                    "type": "c4codata.MEDIUM_Name"
+                                },
+                                "content": ""
+                            },
+                            "ServiceIssueCategoryID": "",
+                            "ServiceLevelAgreement": "",
+                            "ServicePriorityCode": "2",
+                            "ServiceRequestClassificationCode": "",
+                            "ServiceRequestLifeCycleStatusCode": "1",
+                            "ServiceTechnician": "",
+                            "ServiceTechnicianTeam": "",
+                            "WarrantyDescription": "",
+                            "WarrantyFrom": null,
+                            "WarrantyTo": null,
+                            "ServiceAndSupportTeam": "SERVICE",
+                            "ServiceRequestUserLifeCycleStatusCode": "1",
+                            "AssignedTo": "8000000313",
+                            "EscalationStatus": "1",
+                            "AssignedToName": {
+                                "__metadata": {
+                                    "type": "c4codata.ENCRYPTED_LONG_Name"
+                                },
+                                "languageCode": "E",
+                                "content": "Uni Augsburg03"
+                            },
+                            "ProductCategoryDescription": "",
+                            "InitialResponseDate": null,
+                            "Contact": "Max Mustermann",
+                            "ParentServiceRequest": "",
+                            "ETag": "/Date(1510070981842)/",
+                            "CreationDateTime": "/Date(1510070981842)/",
+                            "LastChangeDateTime": "/Date(1510070981842)/",
+                            "RequestedStartTimeZoneCode": "CET",
+                            "RequestedEndTimeZoneCode": "CET",
+                            "RequestAssignmentStatusCodeText": "Processor Action",
+                            "ApprovalStatusCodeText": "",
+                            "DataOriginTypeCodeText": "Manual data entry",
+                            "ItemListServiceRequestExecutionLifeCycleStatusCodeText": "Open",
+                            "ProcessingTypeCodeText": "Service Request",
+                            "RoleCodeText": "Service Point",
+                            "ServicePriorityCodeText": "Urgent",
+                            "ServiceRequestClassificationCodeText": "",
+                            "ServiceRequestLifeCycleStatusCodeText": "Open",
+                            "ServiceRequestUserLifeCycleStatusCodeText": "Open",
+                            "EscalationStatusText": "Not Escalated",
+                            "RequestedStartTimeZoneCodeText": "Central Europe",
+                            "RequestedEndTimeZoneCodeText": "Central Europe",
+                            "ServiceRequestItem": {
+                                "__deferred": {
+                                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestItem"
+                                }
+                            },
+                            "ServiceRequestAttachmentFolder": {
+                                "__deferred": {
+                                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestAttachmentFolder"
+                                }
+                            },
+                            "ServiceRequestBusinessTransactionDocumentReference": {
+                                "__deferred": {
+                                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestBusinessTransactionDocumentReference"
+                                }
+                            },
+                            "ServiceRequestDescription": {
+                                "__deferred": {
+                                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestDescription"
+                                }
+                            },
+                            "ServicePointLocationAddress": {
+                                "__deferred": {
+                                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServicePointLocationAddress"
+                                }
+                            },
+                            "ServiceRequestHistoricalVersion": {
+                                "__deferred": {
+                                    "uri": "https://my304939.crm.ondemand.com/sap/c4c/odata/v1/c4codata/ServiceRequestCollection('00163E184B981EE7B0FABDB739CE714E')/ServiceRequestHistoricalVersion"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

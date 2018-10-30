@@ -1,0 +1,82 @@
+<!-- Navbar <3 -->
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/status']" (click)="navbarCollapsed = true">
+    Smart City Cockpit
+  </a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+          [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+    <ul class="navbar-nav nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/status']" (click)="navbarCollapsed = true">Status</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/network']" (click)="navbarCollapsed = true">Network</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/fleet']" (click)="navbarCollapsed = true">Fleet</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/service']" (click)="navbarCollapsed = true">Service</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/events']" (click)="navbarCollapsed = true">Events</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/feedback']" (click)="navbarCollapsed = true">Feedback</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/config']" (click)="navbarCollapsed = true">Config</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+</div>
+
+
+
+<!--
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+          [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/getting-started']" (click)="navbarCollapsed = true">Getting Started</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/components']" (click)="navbarCollapsed = true">Components</a>
+      </li>
+      <li class="nav-item d-lg-none" *ngFor="let component of components" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/components', component.toLowerCase()]" (click)="navbarCollapsed = true">{{ component }}</a>
+      </li>
+    </ul>
+
+    <span class="github-buttons d-none d-lg-inline">
+      <a class="github-button"
+         href="https://github.com/ng-bootstrap/ng-bootstrap"
+         target="_blank"
+         data-style="mega"
+         data-count-href="/ng-bootstrap/ng-bootstrap/stargazers"
+         data-count-api="/repos/ng-bootstrap/ng-bootstrap#stargazers_count"
+         data-co
+
+         unt-aria-label="# stargazers on GitHub"
+         aria-label="Star ng-bootstrap/ng-bootstrap on GitHub">Star</a>
+      <a href="https://twitter.com/intent/tweet?button_hashtag=ngbootstrap"
+         class="twitter-hashtag-button"
+         data-size="large"
+         data-text="I&#39;m checking out ng-bootstrap, THE Angular UI framework for Bootstrap CSS"
+         data-url="https://ng-bootstrap.github.io"
+         data-show-count="true">Tweet #ngbootstrap</a>
+    </span>
+  </div>
+</header> -->

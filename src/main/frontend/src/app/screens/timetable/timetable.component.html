@@ -1,0 +1,94 @@
+<h2>Timetable for {{lineName}}</h2>
+
+<div *ngIf="!inboundStation">Loading timetable...</div>
+
+<div [ngStyle]="styles.container" *ngIf="inboundStation">
+  <div [ngStyle]="styles.header">
+    <div>
+      <button
+        style="margin-right: 6px"
+        type="button"
+        class="btn btn-outline-dark"
+        [ngClass]="{'active': highlightInboundOutbound}"
+        (click)="selectInboundOutbound()">
+        {{inboundStation}}
+        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"> </i>
+        {{outboundStation}}
+      </button>
+      <button type="button"
+        class="btn btn-outline-dark"
+        [ngClass]="{'active': !highlightInboundOutbound}"
+        (click)="selectOutboundInbound()">
+        {{inboundStation}}
+        <i class="fa fa-arrow-circle-o-left" aria-hidden="true"> </i>
+        {{outboundStation}}
+      </button>
+    </div>
+    <div>
+    <button
+      *ngIf="selectedRow.length !== 0"
+      type="button"
+      class="btn btn-warning"
+      style="margin-right: 12px"
+      (click)="editTour()">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      Reassign Vehicle
+    </button>
+    <button
+      *ngIf="selectedRow.length !== 0"
+      type="button"
+      style="margin-right: 12px"
+      (click)="deleteTour()"
+      class="btn btn-danger">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+      Delete Tour
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="addTour()">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      Add Tour
+    </button>
+    </div>
+  </div>
+
+  <div [ngStyle]="styles.subheader">
+    <app-table-filter
+      #filter
+      [columns]="tableColumns"
+      [callback]="filterTable"></app-table-filter>
+    <div></div>
+  </div>
+  <div [ngStyle]="styles.table">
+    <ngx-datatable
+      name="selectedRow"
+      class="material"
+      [columns]="tableColumns"
+      [rows]="tableData"
+      [columnMode]="'force'"
+      [scrollbarH]="true"
+      [rowHeight]="'auto'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [selected]="selectedRow"
+      (select)="onRowSelect($event)"
+      [selectionType]="'single'"
+      [limit]="10"
+      [sorts]="[{prop: 1, dir: 'asc'}]"
+      [loadingIndicator]="loadingIndicator"
+    >
+      <ngx-datatable-column
+        *ngFor="let col of tableColumns"
+        [width]="130"
+        [cellClass]="getCellClass"
+        [name]="col.name"
+        [prop]="col.prop"
+        [resizeable]="false">
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+
+  <app-modal-wrapper #managetour selectedComponent="manage-tour"></app-modal-wrapper>
+  <img *ngIf="inboundOutboundC > 19" style="position: absolute; top: 0; left: 50;" src="assets/t.png">
+</div>

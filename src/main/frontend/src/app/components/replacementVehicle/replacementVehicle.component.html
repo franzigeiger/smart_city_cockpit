@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title">Replace {{model.type}} <i>#{{model.vehicleID}}</i></h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form #replacementVehicleForm="ngForm">
+
+  <div class="modal-body">
+    <div class="form-group" *ngIf="model.replacementVehicles.length; else loadingReplacementVehicles">
+      <label for="replacementVehicles">Replacement vehicles:</label>
+    <angular2-multiselect
+      name="replacementVehicles"
+      required
+      [settings]="settings"
+      [data]="model.replacementVehicles"
+      [(ngModel)]="model.selectedVehicle"></angular2-multiselect>
+    </div>
+  </div>
+  <ng-template #loadingReplacementVehicles><div>Loading replacement vehicles...</div></ng-template>
+
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-success"
+      [disabled]="!model.selectedVehicle.length"
+      (click)="activeModal.close(model.selectedVehicle)">Replace vehicle</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('close clicked')">Close</button>
+  </div>
+</form>
